@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlDown", "CrawlDown\CrawlDown.csproj", "{ED77B866-65DD-4492-B581-5A321FA59EB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrawlDown", "CrawlDown\CrawlDown.csproj", "{ED77B866-65DD-4492-B581-5A321FA59EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlDown.Test", "CrawlDown.Test\CrawlDown.Test.csproj", "{BCA7C131-107D-460B-B4FF-91CA01775598}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{ED77B866-65DD-4492-B581-5A321FA59EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED77B866-65DD-4492-B581-5A321FA59EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED77B866-65DD-4492-B581-5A321FA59EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA7C131-107D-460B-B4FF-91CA01775598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA7C131-107D-460B-B4FF-91CA01775598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA7C131-107D-460B-B4FF-91CA01775598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA7C131-107D-460B-B4FF-91CA01775598}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
