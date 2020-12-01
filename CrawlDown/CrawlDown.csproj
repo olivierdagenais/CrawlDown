@@ -22,4 +22,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SmartReader" Version="0.7.5" />
+  </ItemGroup>
+
 </Project>
