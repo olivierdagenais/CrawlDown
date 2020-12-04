@@ -35,4 +35,10 @@
     <ProjectReference Include="..\CrawlDown\CrawlDown.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="resources\WEWLC.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Working Effectively With Legacy Code | olivierdagenais.github.io</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Working Effectively With Legacy Code" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal pages repository for hosting at http://olivierdagenais.github.io" />
+<meta property="og:description" content="Personal pages repository for hosting at http://olivierdagenais.github.io" />
+<link rel="canonical" href="http://olivierdagenais.github.io/WEWLC.html" />
+<meta property="og:url" content="http://olivierdagenais.github.io/WEWLC.html" />
+<meta property="og:site_name" content="olivierdagenais.github.io" />
+<script type="application/ld+json">
+{"@type":"WebPage","headline":"Working Effectively With Legacy Code","url":"http://olivierdagenais.github.io/WEWLC.html","description":"Personal pages repository for hosting at http://olivierdagenais.github.io","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=83cd2621fe50605fe07b20a688e1178a9506e876">
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://olivierdagenais.github.io/">olivierdagenais.github.io</a></h1>
+      
+
+      <h1 id="working-effectively-with-legacy-code">Working Effectively With Legacy Code</h1>
+
+<p>A book summary by Olivier Dagenais</p>
+
+<h2 id="preface">Preface</h2>
+
+<blockquote>
+  <p>(p. xv) «[The teams] are trying very hard, but at the end of the day, because of schedule pressure, <strong>the weight of history</strong>, or a lack of any better code to compare their efforts to, many people are writing legacy code.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. xvi) «To me, legacy code is simply code without tests.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. xvi) «Code without tests is bad code. It doesn’t matter how well written it is; it doesn’t matter how pretty or object-oriented or well-encapsulated it is.  With tests, we can change the behaviour of our code quickly and verifiably.  Without them, we really don’t know if our code is getting better or worse.»</p>
+</blockquote>
+
+<h1 id="part-i-the-mechanics-of-change-p-1">PART I: The Mechanics of Change (p. 1)</h1>
+
+<h2 id="chapter-1-changing-software-p-3">Chapter 1: Changing Software (p. 3)</h2>
+
+<h3 id="four-reasons-to-change-software-p-4">Four Reasons to Change Software (p. 4)</h3>
+
+<h3 id="risky-change-p-7">Risky Change (p. 7)</h3>
+
+<h2 id="chapter-2-working-with-feedback-p-9">Chapter 2: Working with Feedback (p. 9)</h2>
+
+<blockquote>
+  <p>(p. 11) «A few minutes ago, we made a mistake and inverted the logic on a condition, but a test failed and we recovered in about a minute. (…) Do you want your feedback in a minute or overnight?»</p>
+</blockquote>
+
+<h3 id="what-is-unit-testing-p-12">What Is Unit Testing? (p. 12)</h3>
+
+<blockquote>
+  <p>(p. 12) «Yes, we have to do [error localization] for unit tests also, but often the work is trivial because the tests are so small.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 12) «Tests that take too long to run end up not being run.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 13) «If we run our tests and they pass, and then we make a small change and they fail, we know precisely where the problem was triggered. It was something we did in that last small change. We can roll back the change and try again.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 13) «A unit test that takes 1/10th of a second to run is a slow unit test.»</p>
+</blockquote>
+
+<h3 id="higher-level-testing-p-14">Higher-Level Testing (p. 14)</h3>
+
+<h3 id="test-coverings-p-14">Test Coverings (p. 14)</h3>
+
+<p>p. 16 gives an example of <strong>Primitive Parameter (385)</strong></p>
+
+<blockquote>
+  <p>(p. 17) «The trick is to do these initial refactorings very conservatively.»</p>
+</blockquote>
+
+<h3 id="the-legacy-code-change-algorithm-p-18">The Legacy Code Change Algorithm (p. 18)</h3>
+
+<blockquote>
+  <ol>
+    <li>Identify change points</li>
+    <li>Find test points</li>
+    <li>Break dependencies</li>
+    <li>Write tests</li>
+    <li>Make changes and refactor</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>(p. 20) «Remember that the things I describe in these chapters are “baby steps.”»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 20) «Often the simplest things, [such as breaking down a large class just to make it easier to work with] can make a significant difference in applications, despite being somewhat mechanical.»</p>
+</blockquote>
+
+<h2 id="chapter-3-sensing-and-separation-p-21">Chapter 3: Sensing and Separation (p. 21)</h2>
+
+<blockquote>
+  <p>(p. 21) «Generally, when we want to get tests in place, there are two reasons to break dependencies: sensing and separation.»</p>
+</blockquote>
+
+<h3 id="faking-collaborators-p-23">Faking Collaborators (p. 23)</h3>
+
+<p>p. 23 Fake Objects</p>
+
+<p>p. 27 Mock Objects</p>
+
+<h2 id="chapter-4-the-seam-model-p-29">Chapter 4: The Seam Model (p. 29)</h2>
+
+<h3 id="a-huge-sheet-of-text-p-29">A Huge Sheet of Text (p. 29)</h3>
+
+<h3 id="seams-p-30">Seams (p. 30)</h3>
+
+<blockquote>
+  <p>(p. 31) «A seam is a place where you can alter behavior in your program without editing in that place.»</p>
+</blockquote>
+
+<h3 id="seam-types-p-33">Seam Types (p. 33)</h3>
+
+<blockquote>
+  <p>(p. 36) «Every seam has an enabling point, a place where you can make the decision to use one behavior or another.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 44) «I like to reserve preprocessing seams and link seams for cases where dependencies are pervasive and there are no better alternatives.»</p>
+</blockquote>
+
+<h2 id="chapter-5-tools-p-45">Chapter 5: Tools (p. 45)</h2>
+
+<h3 id="automated-refactoring-tools-p-45">Automated Refactoring Tools (p. 45)</h3>
+
+<blockquote>
+  <p>(p. 45) «Refactoring (n.). A change made to the interval structure of software to make it easier to understand and cheaper to modify without changing its existing behavior.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 46) «A change is a refactoring only if it doesn’t change behavior.»</p>
+</blockquote>
+
+<h3 id="mock-objects-p-47">Mock Objects (p. 47)</h3>
+
+<blockquote>
+  <p>(p. 47) «The web site www.mock-objects.com is a good place to find references for most of [the freely-available mock object libraries].»</p>
+</blockquote>
+
+<h3 id="unit-testing-harnesses-p-48">Unit-Testing Harnesses (p. 48)</h3>
+
+<blockquote>
+  <p>(p. 52) «If you need to find an xUnit port for your platform or language, go to <a href="http://www.xprogramming.com">http://www.xprogramming.com</a> and look in the Downloads section.»</p>
+</blockquote>
+
+<h3 id="general-test-harnesses-p-53">General Test Harnesses (p. 53)</h3>
+
+<p>(p. 53) Framework for Integrated Tests (FIT)</p>
+<blockquote>
+  <p>«FIT accepts HTML, runs tests defined in HTML tables in it, and produces HTML output.»</p>
+</blockquote>
+
+<blockquote>
+  <p>«There is more information about FIT at <a href="http://fit.c2.com">http://fit.c2.com</a>»</p>
+</blockquote>
+
+<h1 id="part-ii-changing-software-p-55">PART II: Changing Software (p. 55)</h1>
+
+<h2 id="chapter-6-i-dont-have-much-time-and-i-have-to-change-it-p-57">Chapter 6: I Don’t Have Much Time and I Have to Change It (p. 57)</h2>
+
+<blockquote>
+  <p>(p. 57) «You don’t know how long that work might have taken you if you hadn’t written the tests.  You also don’t know how much time it would’ve taken you to debug if you made a mistake, time you could have saved if you had tests in place.»</p>
+</blockquote>
+
+<p>(p. 58) An experiment where a team spends an iteration with tests covering every change. «Ultimately, this is going to make your work go faster…»</p>
+
+<p>(p. 59) «Pay now or pay more later.»</p>
+
+<h3 id="sprout-method-p-59">Sprout Method (p. 59)</h3>
+
+<p>Write feature as new, tested method and call the new method as needed.</p>
+
+<blockquote>
+  <p>(p. 62) «It is far preferable to adding code inline.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 62) «When [<strong>Pass Null (111)</strong>] won’t work [because constructor has a lot of arguments], consider making the sprout a public static method.  You might have to pass in instance variables of the source class as arguments, but it will allow you to make your change.»</p>
+</blockquote>
+
+<h3 id="sprout-class-p-63">Sprout Class (p. 63)</h3>
+
+<p>Useful when <strong>Sprout Method (59)</strong> wouldn’t work because there are many outputs.</p>
+
+<h3 id="wrap-method-p-67">Wrap Method (p. 67)</h3>
+
+<p>Kind of like “extract method” refactoring &amp; <strong>Sprout Method (59)</strong> so that the old code is in a new method alongside the new method for the new code and both new methods are called from the original method, in sequence.</p>
+
+<h3 id="wrap-class-p-71">Wrap Class (p. 71)</h3>
+
+<p>Also known as Decorator Pattern.</p>
+
+<p>(p. 75) Compares <strong>Sprout Method (59)</strong> to <strong>Wrap Method (67)</strong>, when you would use each.</p>
+
+<h3 id="summary-p-76">Summary (p. 76)</h3>
+
+<blockquote>
+  <p>(p. 76) «Yes, it is [more complicated] for now.  But when you really start to break out those 10 or 15 responsibilities in that wrapped class, it will look far more appropriate.»</p>
+</blockquote>
+
+<h2 id="chapter-7-it-takes-forever-to-make-a-change-p-77">Chapter 7: It Takes Forever to Make a Change (p. 77)</h2>
+
+<h3 id="understanding-p-77">Understanding (p. 77)</h3>
+
+<h3 id="lag-time-p-78">Lag Time (p. 78)</h3>
+
+<blockquote>
+  <p>(p. 78) «Systems that are broken up into small, well-named and understandable pieces enable faster work.»</p>
+</blockquote>
+
+<h3 id="breaking-dependencies-p-79">Breaking Dependencies (p. 79)</h3>
+
+<blockquote>
+  <p>(p. 80) «When we have these clusters of classes under test, we have the option of changing the physical structure of out project to make builds easier.  We do this by moving the clusters off to a new package or library.  Builds do become more complex when we do this, but here is the key:  As we break dependencies and section off classes into new packages or libraries, the overall cost of a rebuild of the entire system grows slightly, but the average time for a build can decrease dramatically.»</p>
+</blockquote>
+
+<h3 id="summary-p-85">Summary (p. 85)</h3>
+
+<p>Most of the chapter centers on introducing interfaces to speed up compilation time for platforms that support incremental compilation.</p>
+
+<h2 id="chapter-8-how-do-i-add-a-feature-p-87">Chapter 8: How Do I Add a Feature? (p. 87)</h2>
+
+<blockquote>
+  <p>«In general, it’s better to confront the beast than hide from it.  If we can get code under test, we can use the techniques in this chapter to move forward in a good way.»</p>
+</blockquote>
+
+<h3 id="test-driven-development-p-88">Test-Driven Development (p. 88)</h3>
+
+<ul>
+  <li>the algorithm omits small commits
+    <ul>
+      <li>this is difficult w/o DVCS but even TFVC has tfgit!</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>(p. 92) «Often, when we want to add features to particularly awful code, it’s easier to understand our modifications if we put them in some new place and can see them side by side with the old code.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 93) «Remove Duplication»</p>
+</blockquote>
+
+<p>Make the tests pass first, then make the code better without changing behaviour, something that’s easier to do w/TDD because all your behaviour is tested.</p>
+
+<blockquote>
+  <p>(p. 94) «[with TDD] we are either writing code or refactoring; we are never doing both at once.»</p>
+</blockquote>
+
+<h3 id="programming-by-difference-p-94">Programming by Difference (p. 94)</h3>
+
+<h3 id="summary-p-104">Summary (p. 104)</h3>
+
+<h2 id="chapter-9-i-cant-get-this-class-into-a-test-harness-p-105">Chapter 9: I Can’t Get This Class into a Test Harness (p. 105)</h2>
+
+<h3 id="the-case-of-the-irritating-parameter-p-106">The Case of the Irritating Parameter (p. 106)</h3>
+
+<p>(p. 108) Refers to <strong>Extract Interface (362)</strong></p>
+
+<blockquote>
+  <p>(p. 110) «The FakeConnection class is a little weird.» (It’s a tool)</p>
+</blockquote>
+
+<p>(p. 111) Refers to <strong>Pass Null (111)</strong></p>
+
+<p>(p. 112) Refers to <strong>Null Object Pattern</strong> and <strong>Subclass and Override Method (401)</strong></p>
+
+<h3 id="the-case-of-the-hidden-dependency-p-113">The Case of the Hidden Dependency (p. 113)</h3>
+
+<ul>
+  <li><strong>Parameterize Constructor (379)</strong> &amp; <strong>Preserve Signatures (312)</strong></li>
+  <li><strong>Extract and Override Getter (352)</strong></li>
+  <li><strong>Extract and Override Factory Method (350)</strong></li>
+  <li><strong>Supersede Instance Variable (404)</strong></li>
+</ul>
+
+<h3 id="the-case-of-the-construction-blob-p-116">The Case of the Construction Blob (p. 116)</h3>
+
+<ul>
+  <li><strong>Extract and Override Factory Method (350)</strong></li>
+  <li><strong>Supersede Instance Variable (404)</strong></li>
+</ul>
+
+<h3 id="the-case-of-the-irritating-global-dependency-p-118">The Case of the Irritating Global Dependency (p. 118)</h3>
+
+<ul>
+  <li>(p. 122) <strong>Introduce Static Setter (372)</strong></li>
+  <li>Relax Singleton property, enforce unique instance w/o private constructor</li>
+  <li>(p. 124) Protected constructor is an excellent trade-off</li>
+  <li>(p. 125) <strong>Extract Interface (362)</strong></li>
+  <li><strong>Subclass and Override Method (401)</strong></li>
+  <li>Eliminate global variables</li>
+</ul>
+
+<h3 id="the-case-of-the-horrible-include-dependencies-p-127">The Case of the Horrible Include Dependencies (p. 127)</h3>
+
+<p>C++-specific; include hell</p>
+
+<h3 id="the-case-of-the-onion-parameter-p-130">The Case of the Onion Parameter (p. 130)</h3>
+
+<ul>
+  <li><strong>Pass Null (111)</strong></li>
+  <li><strong>Extract Interface (362)</strong></li>
+</ul>
+
+<h3 id="the-case-of-the-aliased-parameter-p-133">The Case of the Aliased Parameter (p. 133)</h3>
+
+<ul>
+  <li><strong>Extract Interface (362)</strong></li>
+  <li><strong>Subclass and Override Method (401)</strong></li>
+</ul>
+
+<blockquote>
+  <p>(p. 136) «In many languages, we can create classes “on the fly” like this in methods.  Although I don’t like to do it often in production code, it is very convenient when we are testing.  We can make special cases very easily.»</p>
+</blockquote>
+
+<h2 id="chapter-10-i-cant-run-this-method-in-a-test-harness-p-137">Chapter 10: I Can’t Run This Method in a Test Harness (p. 137)</h2>
+
+<blockquote>
+  <p>(p. 137) «If the method doesn’t use much instance data, we can use <strong>Expose Static Method (345)</strong> to get access to the code.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 137) «If the method is pretty long and difficult to deal with, we can use <strong>Break Out Method Object (330)</strong> to move the code to a class that we can instantiate more easily.»</p>
+</blockquote>
+
+<h3 id="the-case-of-the-hidden-method-p-138">The Case of the Hidden Method (p. 138)</h3>
+
+<blockquote>
+  <p>(p. 138) «If we need to test a private method, we should make it public.»</p>
+</blockquote>
+
+<p>(p. 138) An idea is to move private methods to a new class, as public methods.  Keep an instance of that new class as a semi-private field in the original class.</p>
+
+<blockquote>
+  <p>(p. 139) «Good design is testable, and design that isn’t testable is bad.»</p>
+</blockquote>
+
+<p>(p. 140) Another idea is to increase the visibility from private to protected, then subclass for testing.</p>
+
+<blockquote>
+  <p>(p. 141) «It might sound kind of sadistic, but the pain that we feel working in a legacy code base can be an incredible impetus to change.»</p>
+</blockquote>
+
+<h3 id="the-case-of-the-helpful-language-feature-p-141">The Case of the “Helpful” Language Feature (p. 141)</h3>
+
+<p>A collection of a sealed/final class means we need <strong>Adapt Parameter (326)</strong> or <strong>Skin and Wrap the API (205)</strong>.</p>
+
+<p>(p. 143) «The only annoyance…» might be avoided with <code class="language-plaintext highlighter-rouge">IEnumerable&lt;IHttpPostedFile&gt;</code> and some LINQ extension methods.</p>
+
+<h3 id="the-case-of-the-undetectable-side-effect-p-144">The Case of the Undetectable Side Effect (p. 144)</h3>
+
+<blockquote>
+  <p>(p. 145) «Perform a set of <strong>Extract Method (415)</strong> refactorings to divide up the work in this method.»</p>
+</blockquote>
+
+<h4 id="commandquery-separation-p-147">Command/Query Separation (p. 147)</h4>
+
+<blockquote>
+  <p>(p. 147) «A method should be a command or a query, but not both.  A command is a method that can modify the state of the object but that doesn’t return a value.  A query is a method that returns a value but that does not modify the object.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 148) «After those extractions, we can <strong>Subclass and Override Method (401)</strong>.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 150) «Remember that it is okay to extract methods with poor names or poor structure to get tests in place.  Safety first.  After the tests are in place, you can make the code much cleaner.»</p>
+</blockquote>
+
+<h2 id="chapter-11-i-need-to-make-a-change-what-methods-should-i-test-p-151">Chapter 11: I Need to Make a Change. What Methods Should I Test? (p. 151)</h2>
+
+<h3 id="reasoning-about-effects-p-151">Reasoning About Effects (p. 151)</h3>
+
+<blockquote>
+  <p>(p. 155) «Effect Sketches»</p>
+</blockquote>
+
+<h3 id="reasoning-forward-p-157">Reasoning Forward (p. 157)</h3>
+
+<p>The effect sketches will help identify sense points (queries) and actions (commands) for our tests.</p>
+
+<blockquote>
+  <p>(p. 157) «figuring out where change can be detected»</p>
+</blockquote>
+
+<h3 id="effect-propagation-p-163">Effect Propagation (p. 163)</h3>
+
+<blockquote>
+  <p>(p. 165) «Effects propagate in code in three basic ways: (…)»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 165) «Here is a heuristic that I use when looking for effects: (…)»</p>
+</blockquote>
+
+<h3 id="tools-for-effect-reasoning-p-165">Tools for Effect Reasoning (p. 165)</h3>
+
+<ul>
+  <li>private vs. protected/package/public for fields in Java/C#</li>
+  <li>const vs. mutable in C++</li>
+</ul>
+
+<h3 id="learning-from-effect-analysis-p-167">Learning from Effect Analysis (p. 167)</h3>
+
+<blockquote>
+  <p>(p. 168) «In general, programming gets easier as we narrow effects in a program.»</p>
+</blockquote>
+
+<h3 id="simplifying-effect-sketches-p-168">Simplifying Effect Sketches (p. 168)</h3>
+
+<blockquote>
+  <p>(p. 171) «When we remove tiny pieces of duplication, we often end up getting effect sketches with a smaller set of endpoints.  This often translates into easier testing decisions.»</p>
+</blockquote>
+
+<h2 id="chapter-12-i-need-to-make-many-changes-in-one-area-p-173">Chapter 12: I Need to Make Many Changes in One Area (p. 173)</h2>
+
+<p>(Do I have to break dependencies for all the classes involved?)</p>
+
+<blockquote>
+  <p>(p. 173) «We can write tests at a single public method for changes in a number of privates methods (…) the structure of code below the tests can change radically as long as the tests pin down its behaviour.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 174) «Higher-level tests can be useful in refactoring. (…) In fact, changes are often easier than you would expect because you can make changes to the tests and then make changes to the code, moving the structure along in small safe increments.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 174) «Higher-level tests (…) shouldn’t be a substitute for unit tests.»</p>
+</blockquote>
+
+<h3 id="interception-points-p-174">Interception Points (p. 174)</h3>
+
+<blockquote>
+  <p>(p. 174) «a point in your program where you can detect the effects of a particular change.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 180) «A <em>pinch point</em> is a narrowing in an <strong>effect sketch (155)</strong>, a place where it is possible to write tests to cover a wide set of changes.»</p>
+</blockquote>
+
+<h3 id="judging-design-with-pinch-points-p-182">Judging Design with Pinch Points (p. 182)</h3>
+
+<blockquote>
+  <p>(p. 183) «Using effect sketches to find hidden classes.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 183) «Writing tests at pinch points is an ideal way to start some invasive work in part of a program. (…) After you write your <strong>Characterization tests (186)</strong>, you can make changes with impunity.»</p>
+</blockquote>
+
+<h3 id="pinch-point-traps-p-184">Pinch Point Traps (p. 184)</h3>
+
+<ul>
+  <li>unit tests that become integration tests</li>
+</ul>
+
+<blockquote>
+  <p>(p. 184) «When you start to notice that your tests are too large, you should break down the class you are testing, to make smaller independent pieces that can be tested more easily.»</p>
+</blockquote>
+
+<h2 id="chapter-13-i-need-to-make-a-change-but-i-dont-know-what-tests-to-write-p-185">Chapter 13: I Need to Make a Change, but I Don’t Know What Tests to Write (p. 185)</h2>
+
+<blockquote>
+  <p>(p. 185) «The way to win is to concentrate effort on not putting bugs into code in the first place.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 185) «In the natural flow of development, tests that <em>specify</em> become tests that <em>preserve</em>.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 185) «(…) bolster the area we want to change with tests to provide some kind of safety net.»</p>
+</blockquote>
+
+<h3 id="characterization-tests-p-186">Characterization Tests (p. 186)</h3>
+
+<blockquote>
+  <p>(p. 186) «[Characterization Tests] document the actual current behaviour of the system (…)»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 186) «In nearly every legacy system, what the system does is more important than what it is supposed to do.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 186) «…our goal right now is to get tests in place that help us make changes more deterministically.»</p>
+</blockquote>
+
+<h4 id="algorithm">Algorithm</h4>
+
+<ol>
+  <li>Use a piece of code in a test harness.</li>
+  <li>Write an assertion that you know will fail. (i.e. <code class="language-plaintext highlighter-rouge">expected == "fred"</code>)</li>
+  <li>Let the failure tell you what the [actual current] behaviour is.</li>
+  <li>[change the expected to match actual]</li>
+  <li>Repeat</li>
+</ol>
+
+<blockquote>
+  <p>(p. 188) «…write tests until we are satisfied we understand it.»</p>
+</blockquote>
+
+<p>Will the tests sense «any problems that we can cause?»</p>
+
+<h4 id="the-method-use-rule-p-189">The Method Use Rule (p. 189)</h4>
+
+<blockquote>
+  <p>(p. 189) «Before you use a method in a legacy system, check to see if there are tests for it.  If there aren’t, write them.»</p>
+</blockquote>
+
+<h3 id="characterizing-classes-p-189">Characterizing Classes (p. 189)</h3>
+
+<ol>
+  <li>«If you don’t understand an area of code, consider introducing a <strong>Sensing variable (301)</strong> to characterize it.»</li>
+  <li>«…stop to make a <em>list of things that can go wrong</em>.  See if you can formulate tests that trigger them.»</li>
+</ol>
+
+<blockquote>
+  <p>(p. 190) «Make sure you document the important things that you discover as tests.»</p>
+</blockquote>
+
+<h4 id="when-you-find-bugs-p-190">When you find bugs (p. 190)</h4>
+
+<blockquote>
+  <p>(p. 190) «[While characterizing legacy code] what should you do when you find a bug?  Code is new?  Fix it.  Code is deployed?  Someone could be relying on the defect.  Document it, find out.»</p>
+</blockquote>
+
+<h3 id="targeted-testing-p-190">Targeted Testing (p. 190)</h3>
+
+<blockquote>
+  <p>(p. 190) «When you write a test for a branch, ask yourself whether there is any other way that the test could pass, aside from executing that branch.  If you are not sure, use a <strong>Sensing variable (301)</strong> or the debugger to find out whether the test is hitting it.»</p>
+</blockquote>
+
+<h3 id="a-heuristic-for-writing-characterization-tests-p-195">A Heuristic for Writing Characterization Tests (p. 195)</h3>
+
+<p>Write enough tests to convince yourself you understand the current code under test and the changes you’re about to make.</p>
+
+<h2 id="chapter-14-dependencies-on-libraries-are-killing-me-p-197">Chapter 14: Dependencies on Libraries Are Killing Me (p. 197)</h2>
+
+<blockquote>
+  <p>(p. 197) «Avoid littering direct calls to library classes in your code.  You might think that you’ll never change them, but that can become a self-fulfilling prophecy.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 197) «…sometimes the best thing you can do is write a thin wrapper over the classes that you need to separate out.»</p>
+</blockquote>
+
+<p>(p. 198) prefer virtual methods, for easier testing (pretend it’s non-virtual in production)</p>
+
+<h2 id="chapter-15-my-application-is-all-api-calls-p-199">Chapter 15: My Application Is All API Calls (p. 199)</h2>
+
+<blockquote>
+  <p>(p. 199) «There are many different things to consider when choosing to integrate code we can’t change easily.»</p>
+</blockquote>
+
+<p>(p. 200) Mailing List Server example</p>
+
+<blockquote>
+  <p>(p. 203) «The first step is to identify the computational core of code.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 205) «When we have a system that looks like it is nothing but API calls, it helps to imagine that it is just one big object and then apply the responsibility-separation heuristics in Chapter 20 [Class Is Too Big]»</p>
+</blockquote>
+
+<h4 id="how-do-we-move-forward-p-205">How do we move forward? (p. 205)</h4>
+
+<ol>
+  <li>Skin and wrap the API</li>
+  <li>Responsibility-based extraction</li>
+</ol>
+
+<h4 id="how-do-we-choose-between-the-two-p-206">How do we choose between [the two]? (p. 206)</h4>
+
+<ol>
+  <li>Skin and wrap the API
+    <ol>
+      <li>API is relatively small</li>
+      <li>You want to completely separate out dependencies on a third-party library</li>
+      <li>You don’t have tests, and you can’t write them because you can’t test through the API</li>
+      <li>More work, but very useful to isolate from 3rd-party libraries</li>
+    </ol>
+  </li>
+  <li>Responsibility-based extraction
+    <ol>
+      <li>API is more complicated</li>
+      <li>You have a tool that provides a safe extract method support, or you feel confident that you can do the extractions safely by hand</li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="chapter-16-i-dont-understand-the-code-well-enough-to-change-it-p-209">Chapter 16: I Don’t Understand the Code Well Enough to Change It (p. 209)</h2>
+
+<h3 id="notessketching-p-210">Notes/Sketching (p. 210)</h3>
+
+<blockquote>
+  <p>(p. 210) «When reading through code gets confusing, it pays to start drawing pictures and making notes.»</p>
+</blockquote>
+
+<h3 id="listing-markup-p-211">Listing Markup (p. 211)</h3>
+
+<p>Drawing on a code printout.</p>
+
+<h4 id="separating-responsibilities">Separating Responsibilities</h4>
+
+<h4 id="understanding-method-structure">Understanding Method Structure</h4>
+
+<h4 id="extract-methods">Extract Methods</h4>
+
+<h4 id="understand-the-effects-of-a-change">Understand the Effects of a change</h4>
+
+<h3 id="scratch-refactoring-p-212">Scratch Refactoring (p. 212)</h3>
+
+<p>Mess with code to understand it, then revert changes.</p>
+
+<h3 id="delete-unused-code-p-213">Delete Unused Code (p. 213)</h3>
+
+<h2 id="chapter-17-my-application-has-no-structure-p-215">Chapter 17: My Application Has No Structure (p. 215)</h2>
+
+<blockquote>
+  <p>(p. 216) «The brutal truth is that architecture is too important to be left exclusively to a few people.»</p>
+</blockquote>
+
+<h3 id="telling-the-story-of-the-system-p-216">Telling the Story of the System (p. 216)</h3>
+
+<p>Explain architecture with few words; it tends to suggest a simpler architecture.</p>
+
+<blockquote>
+  <p>(p. 217) «…it helps everyone understand what would’ve been ideal and what things are expediencies.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 217) «…having a simple story of how a system works just serves as a roadmap [, a way of getting your bearing as you search for the right places to add features.]»</p>
+</blockquote>
+
+<!-- markdownlint-disable MD026 -->
+
+<h4 id="what-is-the-architecture-of-junit">What is the architecture of JUnit?</h4>
+
+<!-- markdownlint-enable MD026 -->
+
+<h3 id="naked-crc-p-220">Naked CRC (p. 220)</h3>
+
+<p>Class Responsibility Collaborations</p>
+
+<p>Explain something with blank cards using pointing and motion.</p>
+
+<blockquote>
+  <p>(p. 223) «There are just two guidelines in Naked CRC</p>
+
+  <ol>
+    <li>Cards represent instances, not classes.</li>
+    <li>Overlap cards to show a collection of them.»</li>
+  </ol>
+</blockquote>
+
+<h3 id="conversation-scrutiny-p-224">Conversation Scrutiny (p. 224)</h3>
+
+<blockquote>
+  <p>(p. 224) «Listen to conversations about your design.»</p>
+</blockquote>
+
+<h2 id="chapter-18-my-test-code-is-in-the-way-p-227">Chapter 18: My Test Code Is in the Way (p. 227)</h2>
+
+<h3 id="class-naming-conventions-p-227">Class Naming Conventions (p. 227)</h3>
+
+<blockquote>
+  <p>(p. 227) «…it makes sense to make the unit test class name a variation of the class name. (…) I like the <code class="language-plaintext highlighter-rouge">Test</code> suffix convention. (…) each class lines up next to its test class.»</p>
+</blockquote>
+
+<ul>
+  <li>fake classes «use the prefix <code class="language-plaintext highlighter-rouge">Fake</code>»</li>
+  <li>testing subclasses use the prefix <code class="language-plaintext highlighter-rouge">Testing</code></li>
+</ul>
+
+<h3 id="test-location-p-228">Test Location (p. 228)</h3>
+
+<p>(p. 229) The Java example encourages the same package; we might want to override the default namespace for .NET test projects to achieve the same effect.</p>
+
+<h2 id="chapter-19-my-project-is-not-object-oriented--how-do-i-make-safe-changes-p-231">Chapter 19: My Project Is Not Object Oriented.  How Do I Make Safe Changes? (p. 231)</h2>
+
+<blockquote>
+  <p>(p. 231) «get a large chunk of the code under test before doing anything else and then use those tests to get some feedback while developing.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 231) «look for a <strong>Pinch Point (180)</strong> and then use the <strong>Link Seam (36)</strong> to break dependencies well enough to get the code in a test harness.»</p>
+</blockquote>
+
+<h3 id="an-easy-case-p-232">An Easy Case (p. 232)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Set-WriteTime</code> C code from Linux</p>
+
+<h3 id="a-hard-case-p-232">A Hard Case (p. 232)</h3>
+
+<p><code class="language-plaintext highlighter-rouge">scan_packets</code> C code calls 3rd-party <code class="language-plaintext highlighter-rouge">ksr_notify()</code></p>
+
+<ul>
+  <li><strong>Link Seam (36)</strong></li>
+  <li>use macro preprocessor</li>
+</ul>
+
+<h3 id="adding-new-behavior-p-236">Adding New Behavior (p. 236)</h3>
+
+<ul>
+  <li>Use <strong>Test-Driven Development (88)</strong></li>
+</ul>
+
+<blockquote>
+  <p>(p. 236) «Often the work of trying to formulate a test for each piece of code that we’re thinking of writing leads us to alter its design in good ways.»</p>
+</blockquote>
+
+<p>(p. 237) <code class="language-plaintext highlighter-rouge">send_command</code> vs. <code class="language-plaintext highlighter-rouge">form_command</code></p>
+
+<ul>
+  <li>kind of like applying <strong>Command/Query Separation (147)</strong></li>
+</ul>
+
+<p>(p. 238) Use function pointers on a struct to create an abstraction/seam</p>
+
+<h3 id="taking-advantage-of-object-orientation-p-239">Taking Advantage of Object Orientation (p. 239)</h3>
+
+<ul>
+  <li><strong>Encapsulate Global References (339)</strong></li>
+  <li><strong>Preserve Signatures (312)</strong></li>
+  <li><strong>Parameterize Constructor (379)</strong></li>
+</ul>
+
+<h3 id="its-all-object-oriented-p-242">It’s All Object Oriented (p. 242)</h3>
+
+<blockquote>
+  <p>(p. 244) «The old C system was, in reality, just one big object.»</p>
+</blockquote>
+
+<h2 id="chapter-20-this-class-is-too-big-and-i-dont-want-it-to-get-any-bigger--p-245">Chapter 20: This Class Is Too Big and I Don’t Want It to Get Any Bigger  (p. 245)</h2>
+
+<p>TL;DR: Big classes happen.  Break them up.  Why?  Single Responsibility Principle (SRP).  Otherwise: confusion, conflicts &amp; concealment.  Starts off with SRP and an example class called <code class="language-plaintext highlighter-rouge">RuleParser</code>, which, it turns out, has 4 responsibilities.</p>
+
+<p>(p. 246) <strong>Sprout Class (63)</strong> and <strong>Sprout Method (59)</strong> help prevent making it worse.</p>
+
+<blockquote>
+  <p>(p. 246) «The key remedy for big classes is refactoring.»</p>
+</blockquote>
+
+<h4 id="single-responsibility-principle-srp-p-246">Single Responsibility Principle (SRP) (p. 246)</h4>
+
+<blockquote>
+  <p>(p. 246) «Every class should have a single responsibility; it should have a single purpose in the system, and there should be only one reason to change it.»</p>
+</blockquote>
+
+<h4 id="ruleparser-class-p-247"><code class="language-plaintext highlighter-rouge">RuleParser</code> class (p. 247)</h4>
+
+<h3 id="seeing-responsibilities-p-249">Seeing Responsibilities (p. 249)</h3>
+
+<h4 id="heuristic-1-group-methods-p-249">Heuristic #1: Group Methods (p. 249)</h4>
+
+<blockquote>
+  <p>«Look for similar method names. (…) try to find ones that seem to go together.»</p>
+</blockquote>
+
+<h4 id="heuristic-2-look-at-hidden-methods-p-250">Heuristic #2: Look at Hidden Methods (p. 250)</h4>
+
+<blockquote>
+  <p>«If a class has many [private and protected methods], it often indicates that there is another class dying to get out.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 250) «…if you have the urge to test a private method, the method shouldn’t be private…»</p>
+</blockquote>
+
+<h4 id="heuristic-3-look-for-decisions-that-can-change-p-251">Heuristic #3: Look for Decisions that can change (p. 251)</h4>
+
+<blockquote>
+  <p>«…extract methods that reflect what you intend at a high level.»</p>
+</blockquote>
+
+<ul>
+  <li>method grouping is probably easier</li>
+</ul>
+
+<h4 id="heuristic-4-look-for-internal-relationships-p-251">Heuristic #4: Look for internal relationships (p. 251)</h4>
+
+<blockquote>
+  <p>«Are certain instance variables used by some methods and not others?»</p>
+</blockquote>
+
+<ul>
+  <li>Suggests clusters of methods that could be extracted.  Try <em>sketching</em> it out.</li>
+</ul>
+
+<blockquote>
+  <p>(p. 252) «Usually there is some sort of “lumping” in a class.»</p>
+</blockquote>
+
+<h4 id="heuristic-5-look-for-the-primary-responsibility-p-260">Heuristic #5: Look for the primary responsibility (p. 260)</h4>
+
+<h4 id="interface-segregation-principle-isp-p-263">Interface Segregation Principle (ISP) (p. 263)</h4>
+
+<ul>
+  <li>Extract interfaces out of big classes</li>
+</ul>
+
+<h4 id="heuristic-6-when-all-else-fails-do-some-scratch-refactoring-p-264">Heuristic #6: When All Else Fails, Do Some Scratch Refactoring (p. 264)</h4>
+
+<blockquote>
+  <p>(p. 264) «If you are having a lot of trouble seeing responsibilities in a class, do some scratch refactoring.»</p>
+</blockquote>
+
+<h4 id="heuristic-7-focus-on-the-current-work-p-265">Heuristic #7: Focus on the Current Work (p. 265)</h4>
+
+<blockquote>
+  <p>«Pay attention to what you have to do right now.  If you are providing a different way of doing anything, you might have identified a responsibility that you should extract and then allow substitution for.»</p>
+</blockquote>
+
+<h3 id="other-techniques-p-265">Other Techniques (p. 265)</h3>
+
+<p>Read.  Read books, read other people’s code.</p>
+
+<h3 id="moving-forward-p-265">Moving Forward (p. 265)</h3>
+
+<h4 id="strategy-p-266">Strategy (p. 266)</h4>
+
+<blockquote>
+  <p>(p. 266) «The best approach to breaking down big classes is to identify the responsibilities, make sure that everyone else on the team understands them, and then break down the class on as-needed basis.  When you do that, you spread out the risk of the changes and can get other work done as you go.»</p>
+</blockquote>
+
+<h4 id="tactics-p-266">Tactics (p. 266)</h4>
+
+<ul>
+  <li>SRP at implementation level, then SRP at interface level</li>
+  <li>But first, tests!
+    <ul>
+      <li>look at fields &amp; methods to get an idea of what tests to write</li>
+      <li>Chapter 9: I Can’t Get This Class into a Test Harness (p. 105)</li>
+      <li>Chapter 10: I Can’t Run This Method in a Test Harness (p. 137)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>(p. 267) How to extract a class without tests</p>
+
+<h3 id="after-extract-class-p-268">After Extract Class (p. 268)</h3>
+
+<p>«In practice, the biggest danger for teams extracting classes from a big class is getting overambitious.»</p>
+
+<h2 id="chapter-21-im-changing-the-same-code-all-over-the-place-p-269">Chapter 21: I’m Changing the Same Code All Over the Place (p. 269)</h2>
+
+<p>Example is a Java-based networking system.</p>
+
+<h3 id="first-steps-p-272">First Steps (p. 272)</h3>
+
+<blockquote>
+  <p>(p. 272) «Removing small pieces of duplication helps, and it makes it easier to see larger areas of duplication later.»</p>
+</blockquote>
+
+<p>(p. 272) extract <code class="language-plaintext highlighter-rouge">writeField()</code></p>
+
+<p>(p. 274) introduce a superclass (<code class="language-plaintext highlighter-rouge">Command</code>)</p>
+
+<p>(p. 275) extract <code class="language-plaintext highlighter-rouge">writeBody()</code></p>
+
+<blockquote>
+  <p>(p. 275) «When two methods look roughly the same, extract the differences to other methods.  When you do that, you can often make them exactly the same and get rid of one.»</p>
+</blockquote>
+
+<p>(p. 276) pull up common fields</p>
+
+<p>(p. 276) introduce abstract <code class="language-plaintext highlighter-rouge">getCommandChar()</code> (I would have used an abstract constructor parameter to set a read-only field)</p>
+
+<p>(p. 277) introduce abstract <code class="language-plaintext highlighter-rouge">writeBody()</code></p>
+
+<p>(p. 279) extract and make abstract <code class="language-plaintext highlighter-rouge">getBodySize()</code></p>
+
+<p>(p. 280) extract <code class="language-plaintext highlighter-rouge">getFieldSize()</code></p>
+
+<p>(p. 281) introduce a <code class="language-plaintext highlighter-rouge">List</code> of fields to avoid skew between <code class="language-plaintext highlighter-rouge">getBodySize()</code> and <code class="language-plaintext highlighter-rouge">writeBody()</code></p>
+
+<h4 id="abbreviations-p-284">Abbreviations (p. 284)</h4>
+
+<p>Avoid if possible.</p>
+
+<p>(p. 285) Motivates the duplication removal</p>
+
+<blockquote>
+  <p>(p. 285) «When you remove duplication across classes, you end up with very small, focused methods.  Each of them does something that no other method does, and that gives us an incredible advantage: orthogonality.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 285) «If you want to change existing behavior in your code and there is exactly one place you have to go to make that change, you’ve got orthogonality.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 286) «When behavior is localized in single methods, it’s easy to replace it or add to it.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 286) «One of the startling things that you discover when you start removing duplication zealously is that designs emerge.»</p>
+</blockquote>
+
+<h4 id="openclosed-principle-p-287">Open/Closed Principle (p. 287)</h4>
+
+<blockquote>
+  <p>«When we remove duplication, our code often naturally starts to fall in line with the <em>Open/Closed Principle</em>.»</p>
+</blockquote>
+
+<h2 id="chapter-22-i-need-to-change-a-monster-method-and-i-cant-write-tests-for-it-p-289">Chapter 22: I Need to Change a Monster Method and I Can’t Write Tests for It (p. 289)</h2>
+
+<blockquote>
+  <p>(p. 289) «One of the hardest things about working in legacy code is dealing with large methods.»</p>
+</blockquote>
+
+<p>You can avoid refactoring via <strong>Sprout Method (59)</strong> and <strong>Sprout Class (p. 63)</strong>, but don’t!</p>
+
+<blockquote>
+  <p>(p. 289) «A monster method is a method that is so long and so complex that you really don’t feel comfortable touching it.»</p>
+</blockquote>
+
+<h3 id="varieties-of-monsters-p-290">Varieties of Monsters (p. 290)</h3>
+
+<blockquote>
+  <p>(p. 290) «…aren’t necessarily distinct…»</p>
+</blockquote>
+
+<h4 id="bulleted-methods-p-290">Bulleted Methods (p. 290)</h4>
+
+<blockquote>
+  <p>(p. 290) «…with nearly no indentation (…) that reminds you of a bulleted list.»</p>
+</blockquote>
+
+<h4 id="snarled-methods-p-292">Snarled Methods (p. 292)</h4>
+
+<blockquote>
+  <p>(p. 292) «…dominated by a single large, indented section.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 294) «Nearly every refactoring tool supports the <em>extract method</em> refactoring because there is an incredible amount of leverage in that support.»</p>
+</blockquote>
+
+<h3 id="tackling-monsters-with-automated-refactoring-support-p-294">Tackling Monsters with Automated Refactoring Support (p. 294)</h3>
+
+<blockquote>
+  <p>(p. 294) «To use refactoring tools effectively with large methods, it pays to make a series of changes solely with the tool and to avoid all other edits to the source. (…) it gives you a clean separation between changes that are known to be safe and changes that aren’t.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 294) «When you do your extractions these should be your key goals:</p>
+
+  <ol>
+    <li>To separate logic from awkward dependencies.</li>
+    <li>To introduce seams that make it easier to get tests in place for more refactoring.»</li>
+  </ol>
+</blockquote>
+
+<blockquote>
+  <p>(p. 295) «…we can start to name high-level pieces of the method and break dependencies at the same time.»</p>
+</blockquote>
+
+<p>(p. 296) allows use of <strong>Subclass and Override Method (401)</strong></p>
+
+<blockquote>
+  <p>(p. 297) « …do a lot of coarse work safely and handle the details after you get other tests in place.  Don’t be concerned about methods that seem like they don’t fit the class.  Often they point toward the need to extract a new class later.  See <strong>Chapter 20: This Class Is Too Big and I Don’t Want It to Get Any Bigger  (p. 245)</strong>»</p>
+</blockquote>
+
+<h3 id="the-manual-refactoring-challenge-p-297">The Manual Refactoring Challenge (p. 297)</h3>
+
+<blockquote>
+  <p>(p. 297) «When you don’t have a refactoring tool, correctness is something that you have to work to maintain, and tests are the strongest tool around.»</p>
+</blockquote>
+
+<p>(p. 297) List of things that can go wrong with manual method extraction</p>
+
+<ol>
+  <li>Forget to pass a variable in new method.</li>
+  <li>New method name hides or overrides existing method.</li>
+  <li>Mistake in parameters or return values.</li>
+</ol>
+
+<blockquote>
+  <p>(p. 297) «The techniques in this section can help make extraction less risky.»</p>
+</blockquote>
+
+<h4 id="introduce-sensing-variable-p-298">Introduce Sensing Variable (p. 298)</h4>
+
+<ul>
+  <li>Temporarily add a field that’s checked by a specially-crafted test.  Refactor, make sure tests still pass, then remove field/variable + test. (Could also refactor tests to target extracted methods)</li>
+</ul>
+
+<h4 id="extract-what-you-know-p-301">Extract What You Know (p. 301)</h4>
+
+<blockquote>
+  <p>(p. 301) «Start small and find little pieces of code that we can extract confidently without tests, and then add tests to cover them.»</p>
+</blockquote>
+
+<ul>
+  <li>Minimize <em>coupling count</em>: «number of values that pass into and out of the method you are extracting»</li>
+  <li>Consider extracting methods for code with coupling count of 0!!</li>
+</ul>
+
+<blockquote>
+  <p>(p. 302) «After you extract, write a few tests for the method you extracted.»</p>
+</blockquote>
+
+<h4 id="gleaning-dependencies-p-303">Gleaning Dependencies (p. 303)</h4>
+
+<ul>
+  <li>Focus testing &amp; refactoring on the primary logic of a method, especially if breaking it would not be obviously detected.</li>
+  <li>Preserve key behaviour!</li>
+</ul>
+
+<h4 id="break-out-a-method-object-p-304">Break Out a Method Object (p. 304)</h4>
+
+<ul>
+  <li>You can’t always use sensing variables, especially if the state you want to sense is in local variables.  Solution?  Create a class just to perform the work of the method, where parameters become fields (initialized in constructor), allowing more variables to be promoted to fields without interfering with original class.</li>
+</ul>
+
+<h3 id="strategy-p-304">Strategy (p. 304)</h3>
+
+<h4 id="skeletonize-methods-p-304">Skeletonize Methods (p. 304)</h4>
+
+<ul>
+  <li>Conditional statement: extract condition &amp; body together OR separately</li>
+  <li>Separately means it’s easier to reorganize logic later</li>
+</ul>
+
+<h4 id="find-sequences-p-304">Find Sequences (p. 304)</h4>
+
+<ul>
+  <li>Conditional statement: extract condition &amp; body together OR separately</li>
+  <li>Together means it’s easier to identify a common sequence of operations</li>
+</ul>
+
+<p>(p. 306) (text missing in 1st paragraph)</p>
+
+<h4 id="extract-to-the-current-class-first-p-306">Extract to the Current Class First (p. 306)</h4>
+
+<ul>
+  <li>Don’t try to perform two refactors at the same time: extract method, test, commit, move method, test, commit.  Less error prone.</li>
+</ul>
+
+<h4 id="extract-small-pieces-p-306">Extract Small Pieces (p. 306)</h4>
+
+<p>Start extracting small methods, even if it does not feel like progress.</p>
+
+<h4 id="be-prepared-to-redo-extractions-p-307">Be Prepared to Redo Extractions (p. 307)</h4>
+
+<blockquote>
+  <p>(p. 307) «Sometimes the best way to move forward is to undo an extraction or two and re-extract.»</p>
+</blockquote>
+
+<h2 id="chapter-23-how-do-i-know-that-im-not-breaking-anything-p-309">Chapter 23: How Do I Know That I’m Not Breaking Anything? (p. 309)</h2>
+
+<blockquote>
+  <p>(p. 309) «…we discuss a variety of ways to reduce risk when we edit [code].»</p>
+</blockquote>
+
+<h3 id="hyperaware-editing-p310">Hyperaware Editing (p.310)</h3>
+
+<blockquote>
+  <p>(p. 310) «[Every] keystroke either changes the behaviour of the software or it doesn’t.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 310) «…anything that helps us know - really know - how we are affecting software when we tpe can help us reduce bugs.  <strong>Test-Driven Development (p. 88)</strong> is very powerful in this way.  When you can get your code in a test harness and run tests against it in less than a second, you can run tests whenever you need to incredibly fast and really know what the effects of a change are.»</p>
+</blockquote>
+
+<h3 id="single-goal-editing-p-311">Single-Goal Editing (p. 311)</h3>
+
+<blockquote>
+  <p>(p. 312) «Programming is the art of doing one thing at a time.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 312) «…[work] very deliberately and really [know] what your code does.»</p>
+</blockquote>
+
+<h3 id="preserve-signatures-p-312">Preserve Signatures (p. 312)</h3>
+
+<blockquote>
+  <p>(p. 312) «In general, the way to handle [avoiding making mistakes when editing code] is to write tests.  When we have tests in place, we’re able to catch many of the errors that we make when we change code.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 312) «…in many systems, we have to refactor a bit just to make the system testable enough to refactor more.»</p>
+</blockquote>
+
+<ul>
+  <li>Do one thing at a time.  One extract method, one extract class, etc. to reduce the chance of «making foolish mistakes, and with no tests to catch them, often they were found for later than they needed to be.»</li>
+</ul>
+
+<h3 id="lean-on-the-compiler-p-315">Lean on the Compiler (p. 315)</h3>
+
+<ul>
+  <li>Break the code, compile &amp; fix the errors identified by compiler.  More precise than “Find in files”, although these days we have a “Find All References” feature.</li>
+</ul>
+
+<blockquote>
+  <p>(p. 316) «If your builds take a long time, it might be more practical to search for the places where you need to make changes.»</p>
+</blockquote>
+
+<ul>
+  <li>Doesn’t always work, such as inheritance.</li>
+</ul>
+
+<h4 id="pair-programming-p-316">Pair Programming (p. 316)</h4>
+
+<blockquote>
+  <p>(p. 316) «It is a remarkably good way to increase quality and spread knowledge around a team.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 317) «Let’s face it, working in legacy code is surgery, and doctors never operate alone.»</p>
+</blockquote>
+
+<h2 id="chapter-24-we-feel-overwhelmed-it-isnt-going-to-get-any-better-p-319">Chapter 24: We Feel Overwhelmed. It Isn’t Going to Get Any Better (p. 319)</h2>
+
+<blockquote>
+  <p>(p. 319) «It is possible to connect with what is fun about programming.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «The key to thriving in legacy code is finding what motivates you.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «…there really isn’t much that can replace working in a good environment with people you respect who know how to have fun at work.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «Another thing that helps is to connect with the larger community.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «The attitude we bring to the work is important.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «TDD some code outside of work.  Program for fun a little bit.»</p>
+</blockquote>
+
+<blockquote>
+  <p>(p. 320) «If morale is low on your team, (…) pick the ugliest most obnoxious set of classes in the project and get them under test.  When you’ve tackled the worst problem as a team, you’ll feel in control of your situation.»</p>
+</blockquote>
+
+
+      
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. <a href="https://github.com/olivierdagenais/olivierdagenais.github.io/edit/master/WEWLC.md">Improve this page</a>.
+      </div>
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+    
+  </body>
+</html>
