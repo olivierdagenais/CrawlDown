@@ -10,6 +10,11 @@ namespace CrawlDown
     {
         private bool _isDebug = false;
 
+        public Article Article {
+            get;
+            private set;
+        }
+
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -26,8 +31,8 @@ namespace CrawlDown
                 sr.LoggerDelegate = Console.WriteLine;
             }
 
-            var result = sr.GetArticle();
-            return result;
+            Article = sr.GetArticle();
+            return Article;
         }
     }
 }
