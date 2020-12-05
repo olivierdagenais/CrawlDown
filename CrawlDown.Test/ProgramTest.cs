@@ -26,8 +26,7 @@ namespace CrawlDown
             var resourceFiles = resourcesDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories);
             foreach (var resourceFile in resourceFiles)
             {
-                var relativePath = resourceFile.FullName.Substring(resourcesFolder.Length + 1);
-                var fixedRelativePath = relativePath.Replace('\\', '/');
+                var fixedRelativePath = Program.RelativizePath(resourcesFolder, resourceFile.FullName);
                 var uri = new Uri(_baseUri, fixedRelativePath);
                 _resources.Add(fixedRelativePath, Tuple.Create(uri, resourceFile));
             }
