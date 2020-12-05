@@ -20,6 +20,12 @@ namespace CrawlDown
             Console.WriteLine("Hello World!");
         }
 
+        internal static string RelativizePath(string commonPath, string longerPath)
+        {
+            var result = longerPath.Substring(commonPath.Length + 1);
+            return result;
+        }
+
         public Article DownloadArticle(Uri uri)
         {
             var sr = new Reader(uri.ToString())

@@ -96,5 +96,16 @@ namespace CrawlDown
 
             Assert.AreEqual("Working Effectively With Legacy Code", actual.Title);
         }
+
+        [TestMethod]
+        public void RelativizePath_OneSubFolder()
+        {
+            var commonPath = @"C:\Users\developer\src\project\repo";
+            var longerPath = @"C:\Users\developer\src\project\repo\sub";
+
+            var actual = Program.RelativizePath(commonPath, longerPath);
+
+            Assert.AreEqual("sub", actual);
+        }
     }
 }
