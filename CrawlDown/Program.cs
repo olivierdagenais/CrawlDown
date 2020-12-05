@@ -1,5 +1,6 @@
 ﻿using SmartReader;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -55,7 +56,10 @@ namespace CrawlDown
             };
             if (_isDebug)
             {
-                sr.LoggerDelegate = Console.WriteLine;
+                sr.LoggerDelegate = message =>
+                {
+                    Debug.WriteLine(message);
+                };
             }
 
             Article = sr.GetArticle();
