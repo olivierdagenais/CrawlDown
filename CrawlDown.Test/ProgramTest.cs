@@ -98,6 +98,19 @@ namespace CrawlDown
         }
 
         [TestMethod]
+        public void RelativizePath_Incompatible()
+        {
+            var commonPath = @"C:\Users\user\src\project\repo";
+            var longerPath = @"C:\Users\developer\src\project\repo\sub";
+
+            var e = Assert.ThrowsException<ArgumentException>(() => { 
+                Program.RelativizePath(commonPath, longerPath);
+            });
+
+            StringAssert.Contains(e.Message, @"repo\sub' does not start with 'C:\Users\user");
+        }
+
+        [TestMethod]
         public void RelativizePath_OneSubFolder()
         {
             var commonPath = @"C:\Users\developer\src\project\repo";

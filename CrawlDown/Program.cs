@@ -22,6 +22,13 @@ namespace CrawlDown
 
         internal static string RelativizePath(string commonPath, string longerPath)
         {
+            if (!longerPath.StartsWith(commonPath))
+            {
+                throw new ArgumentException(
+                    $"{nameof(longerPath)} '{longerPath}' does not start with '{commonPath}'",
+                    nameof(longerPath)
+                );
+            }
             var result = longerPath.Substring(commonPath.Length + 1);
             return result;
         }
