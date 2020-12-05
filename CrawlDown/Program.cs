@@ -8,7 +8,7 @@ namespace CrawlDown
 {
     public class Program
     {
-        private bool _isDebug = false;
+        internal bool _isDebug = false;
 
         public Article Article {
             get;
