@@ -120,5 +120,16 @@ namespace CrawlDown
 
             Assert.AreEqual("sub", actual);
         }
+
+        [TestMethod]
+        public void RelativizePath_TwoSubFolders()
+        {
+            var commonPath = @"C:\Users\developer\src\project\repo";
+            var longerPath = @"C:\Users\developer\src\project\repo\sub\folder";
+
+            var actual = Program.RelativizePath(commonPath, longerPath);
+
+            Assert.AreEqual("sub/folder", actual);
+        }
     }
 }

@@ -29,7 +29,8 @@ namespace CrawlDown
                     nameof(longerPath)
                 );
             }
-            var result = longerPath.Substring(commonPath.Length + 1);
+            var relativePath = longerPath.Substring(commonPath.Length + 1);
+            var result = relativePath.Replace('\\', '/');
             return result;
         }
 
