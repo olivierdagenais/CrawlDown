@@ -1,5 +1,6 @@
 ﻿using SmartReader;
 using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("CrawlDown.Test")]
@@ -9,11 +10,18 @@ namespace CrawlDown
     public class Program
     {
         internal bool _isDebug = false;
+        internal string _destinationPath = null;
 
         public Article Article {
             get;
             private set;
         }
+
+        public DirectoryInfo DestinationRoot
+        {
+            get;
+            set;
+        } = new DirectoryInfo(Environment.CurrentDirectory);
 
         public static void Main(string[] args)
         {
@@ -46,6 +54,7 @@ namespace CrawlDown
             }
 
             Article = sr.GetArticle();
+            _destinationPath = Path.Combine(DestinationRoot.FullName, uri.Host);
             return Article;
         }
     }
