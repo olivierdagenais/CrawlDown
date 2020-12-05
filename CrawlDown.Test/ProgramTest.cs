@@ -94,8 +94,7 @@ namespace CrawlDown
             var actual = cut.DownloadArticle(testUri);
 
             Assert.AreEqual("Working Effectively With Legacy Code", actual.Title);
-            var pwd = Environment.CurrentDirectory;
-            var relativeDestinationPath = Program.RelativizePath(pwd, cut._destinationPath);
+            var relativeDestinationPath = Program.RelativizePath(cut._destinationPath);
             Assert.AreEqual("localhost", relativeDestinationPath);
         }
 

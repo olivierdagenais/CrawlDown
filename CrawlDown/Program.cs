@@ -28,6 +28,11 @@ namespace CrawlDown
             Console.WriteLine("Hello World!");
         }
 
+        internal static string RelativizePath(string longerPath)
+        {
+            return RelativizePath(Environment.CurrentDirectory, longerPath);
+        }
+
         internal static string RelativizePath(string commonPath, string longerPath)
         {
             if (!longerPath.StartsWith(commonPath))
