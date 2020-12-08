@@ -38,6 +38,7 @@ namespace CrawlDown
         {
             _mockHttp = new MockHttpMessageHandler();
             Reader.SetBaseHttpClientHandler(_mockHttp);
+            Program.HttpClient = new HttpClient(_mockHttp);
             _baseUri = new UriBuilder("http", "localhost", 80).Uri;
 
             // TODO: we only need to scan the resources folder once...
@@ -58,6 +59,7 @@ namespace CrawlDown
         public void StopHttpMocking()
         {
             Reader.SetBaseHttpClientHandler(new HttpClientHandler());
+            Program.HttpClient = new HttpClient();
             _mockHttp.Dispose();
             _mockHttp = null;
         }
@@ -104,6 +106,20 @@ namespace CrawlDown
             Assert.AreEqual("Working Effectively With Legacy Code", actual.Title);
             var relativeDestinationPath = Program.RelativizePath(cut._destinationPath);
             Assert.AreEqual("localhost", relativeDestinationPath);
+        }
+
+        [TestMethod]
+        public void DownloadImages_withImages()
+        {
+            var testUri = UriForResource("withImages/page.html");
+            var cut = new Program();
+            var article = cut.DownloadArticle(testUri);
+            Assert.AreEqual("withImages", article.Title);
+
+            cut.DownloadImages();
+
+            var actual = cut.SourceToImageMap;
+            Assert.AreEqual(1, actual.Count);
         }
 
         [TestMethod]

@@ -1,8 +1,11 @@
 ﻿using SmartReader;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("CrawlDown.Test")]
 
@@ -10,6 +13,8 @@ namespace CrawlDown
 {
     public class Program
     {
+        internal static HttpClient HttpClient = new HttpClient();
+
         internal bool _isDebug = false;
         internal string _destinationPath = null;
 
@@ -23,6 +28,11 @@ namespace CrawlDown
             get;
             set;
         } = new DirectoryInfo(Environment.CurrentDirectory);
+
+        public IDictionary<string, FileInfo> SourceToImageMap
+        {
+            get;
+        } = new Dictionary<string, FileInfo>();
 
         public static void Main(string[] args)
         {
@@ -65,6 +75,41 @@ namespace CrawlDown
             Article = sr.GetArticle();
             _destinationPath = Path.Combine(DestinationRoot.FullName, uri.Host);
             return Article;
+        }
+
+        public void DownloadImages()
+        {
+            SourceToImageMap.Clear();
+            var task = Article.GetImagesAsync(0);
+            task.Wait();
+            var images = task.Result;
+            var tasks = new List<Task>();
+            Directory.CreateDirectory(_destinationPath);
+            foreach (var image in images)
+            {
+                var imageUri = image.Source;
+                var imageUriString = imageUri.ToString();
+                if (!SourceToImageMap.ContainsKey(imageUriString))
+                {
+                    var imageUriPath = imageUri.AbsolutePath.TrimEnd('/');
+                    var imageFileName = Path.GetFileName(imageUriPath);
+                    var imageFilePath = Path.Combine(_destinationPath, imageFileName);
+                    var imageFileInfo = new FileInfo(imageFilePath);
+                    var t = HttpClient.GetStreamAsync(imageUri).ContinueWith(t =>
+                    {
+                        if (t.Status == TaskStatus.RanToCompletion)
+                        {
+                            using (var sw = new FileStream(imageFileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.Read))
+                            {
+                                t.Result.CopyTo(sw);
+                            }
+                            SourceToImageMap.Add(imageUriString, imageFileInfo);
+                        }
+                    });
+                    tasks.Add(t);
+                }
+            }
+            Task.WaitAll(tasks.ToArray());
         }
     }
 }
