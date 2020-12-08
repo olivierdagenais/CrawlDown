@@ -50,7 +50,7 @@ namespace CrawlDown
                 var fileInfo = tuple.Item2;
                 var contentType = MimeUtility.GetMimeMapping(fileInfo.Name);
                 _mockHttp.When(uri.ToString())
-	                .Respond(contentType, File.OpenRead(fileInfo.FullName));
+                    .Respond(contentType, File.OpenRead(fileInfo.FullName));
             }
         }
 
@@ -59,7 +59,21 @@ namespace CrawlDown
         {
             Reader.SetBaseHttpClientHandler(new HttpClientHandler());
             _mockHttp.Dispose();
-	        _mockHttp = null;
+            _mockHttp = null;
+        }
+
+        [TestMethod]
+        public void HttpMocking_SupportsHeadMethodWithContentLength()
+        {
+            var testUri = UriForResource("WEWLC.html");
+            var client = new HttpClient(_mockHttp);
+            var request = new HttpRequestMessage(HttpMethod.Head, testUri);
+
+            var task = client.SendAsync(request);
+            task.Wait();
+            var response = task.Result;
+
+            Assert.AreEqual(50165, response.Content.Headers.ContentLength);
         }
 
         [TestMethod]
