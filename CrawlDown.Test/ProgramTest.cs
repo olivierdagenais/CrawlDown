@@ -2,9 +2,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using WireMock.RequestBuilders;
-using WireMock.ResponseBuilders;
-using WireMock.Server;
+using System.Net.Http;
+using MimeMapping;
+using RichardSzalay.MockHttp;
+using SmartReader;
 
 namespace CrawlDown
 {
@@ -14,7 +15,7 @@ namespace CrawlDown
     [TestClass]
     public class ProgramTest
     {
-        private WireMockServer _server = null;
+        private MockHttpMessageHandler _mockHttp = null;
         private Uri _baseUri = null;
         private IDictionary<string, Tuple<Uri, FileInfo>> _resources = null;
 
@@ -33,39 +34,32 @@ namespace CrawlDown
         }
 
         [TestInitialize]
-        public void StartWireMock()
+        public void StartHttpMocking()
         {
-            _server = WireMockServer.Start();
-            _baseUri = new UriBuilder("http", "localhost", _server.Ports[0]).Uri;
+            _mockHttp = new MockHttpMessageHandler();
+            Reader.SetBaseHttpClientHandler(_mockHttp);
+            _baseUri = new UriBuilder("http", "localhost", 80).Uri;
 
             // TODO: we only need to scan the resources folder once...
             FindResourceFiles();
 
             foreach (var keyTuplePair in _resources)
             {
-                var relativePath = keyTuplePair.Key;
                 var tuple = keyTuplePair.Value;
+                var uri = tuple.Item1;
                 var fileInfo = tuple.Item2;
-                _server
-                    .Given(
-                        Request.Create()
-                        .WithPath($"/{relativePath}")
-                        .UsingGet()
-                    )
-                    .RespondWith(
-                        Response.Create()
-                            .WithStatusCode(200)
-                            .WithBodyFromFile(fileInfo.FullName)
-                    )
-                ;
+                var contentType = MimeUtility.GetMimeMapping(fileInfo.Name);
+                _mockHttp.When(uri.ToString())
+	                .Respond(contentType, File.OpenRead(fileInfo.FullName));
             }
         }
 
         [TestCleanup]
-        public void StopWireMock()
+        public void StopHttpMocking()
         {
-            _server.Stop();
-            _server = null;
+            Reader.SetBaseHttpClientHandler(new HttpClientHandler());
+            _mockHttp.Dispose();
+	        _mockHttp = null;
         }
 
         [TestMethod]
