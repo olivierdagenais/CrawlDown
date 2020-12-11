@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrawlDown", "CrawlDown\CrawlDown.csproj", "{ED77B866-65DD-4492-B581-5A321FA59EB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlDown.Test", "CrawlDown.Test\CrawlDown.Test.csproj", "{BCA7C131-107D-460B-B4FF-91CA01775598}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrawlDown.Test", "CrawlDown.Test\CrawlDown.Test.csproj", "{BCA7C131-107D-460B-B4FF-91CA01775598}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EDFAA079-AF06-4B70-9EDC-A191AFA20C9C}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
