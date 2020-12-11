@@ -96,6 +96,32 @@ namespace CrawlDown
         }
 
         [TestMethod]
+        public void ConvertToMarkdown_Wewlc()
+        {
+            const string title = "Working Effectively With Legacy Code";
+            var resource = _resources["WEWLC.html"];
+            var sourceFileInfo = resource.Item2;
+            using var sr = sourceFileInfo.OpenText();
+            var htmlString = sr.ReadToEnd();
+            var cut = new Program();
+            using var destination = new StringWriter();
+
+            cut.ConvertToMarkdown(title, htmlString, destination);
+
+            var actual = destination.ToString();
+            StringAssert.StartsWith(actual,
+                @"# Working Effectively With Legacy Code
+
+# [olivierdagenais.github.io](http://olivierdagenais.github.io/)
+
+# Working Effectively With Legacy Code
+
+A book summary by Olivier Dagenais
+
+## Preface");
+        }
+
+        [TestMethod]
         public void DownloadArticle_Wewlc()
         {
             var testUri = UriForResource("WEWLC.html");
@@ -128,7 +154,8 @@ namespace CrawlDown
             var commonPath = @"C:\Users\user\src\project\repo";
             var longerPath = @"C:\Users\developer\src\project\repo\sub";
 
-            var e = Assert.ThrowsException<ArgumentException>(() => { 
+            var e = Assert.ThrowsException<ArgumentException>(() =>
+            {
                 Program.RelativizePath(commonPath, longerPath);
             });
 

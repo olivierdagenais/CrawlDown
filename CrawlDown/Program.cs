@@ -6,6 +6,7 @@ using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using ReverseMarkdown;
 
 [assembly: InternalsVisibleTo("CrawlDown.Test")]
 
@@ -18,7 +19,8 @@ namespace CrawlDown
         internal bool _isDebug = false;
         internal string _destinationPath = null;
 
-        public Article Article {
+        public Article Article
+        {
             get;
             private set;
         }
@@ -110,6 +112,27 @@ namespace CrawlDown
                 }
             }
             Task.WaitAll(tasks.ToArray());
+        }
+
+        public void ConvertToMarkdown(string title, string htmlString, TextWriter destination)
+        {
+            var rmConfig = new Config
+            {
+                GithubFlavored = true,
+                ListBulletChar = '*',
+                RemoveComments = true,
+                SmartHrefHandling = false,
+                UnknownTags = Config.UnknownTagsOption.Bypass,
+            };
+            var converter = new Converter(rmConfig);
+
+            var markdownText = converter.Convert(htmlString);
+
+            var trimmedMarkdown = markdownText.Trim();
+            destination.WriteLine($"# {title}");
+            destination.WriteLine();
+            destination.Write(trimmedMarkdown);
+            destination.WriteLine();
         }
     }
 }
