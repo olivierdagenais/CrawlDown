@@ -137,7 +137,7 @@ namespace CrawlDown
 
         internal static string RemoveMultipleBlankLines(string s)
         {
-            return "";
+            return s;
         }
     }
 }
