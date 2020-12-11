@@ -134,5 +134,10 @@ namespace CrawlDown
             destination.Write(trimmedMarkdown);
             destination.WriteLine();
         }
+
+        internal static string RemoveMultipleBlankLines(string s)
+        {
+            return "";
+        }
     }
 }

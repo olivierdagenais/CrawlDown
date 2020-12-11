@@ -183,5 +183,15 @@ A book summary by Olivier Dagenais
 
             Assert.AreEqual("sub/folder", actual);
         }
+
+        [TestMethod]
+        public void RemoveMultipleBlankLines_EmptyString()
+        {
+            const string input = @"";
+
+            var actual = Program.RemoveMultipleBlankLines(input);
+
+            Assert.AreEqual("", actual);
+        }
     }
 }
