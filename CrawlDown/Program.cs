@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ReverseMarkdown;
 
@@ -137,7 +138,9 @@ namespace CrawlDown
 
         internal static string RemoveMultipleBlankLines(string s)
         {
-            return s;
+            var regex = new Regex("(\\r?\\n){3,}");
+            var result = regex.Replace(s, "\r\n\r\n");
+            return result;
         }
     }
 }

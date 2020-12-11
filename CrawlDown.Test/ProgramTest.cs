@@ -203,5 +203,40 @@ A book summary by Olivier Dagenais
 
             Assert.AreEqual("The quick brown fox jumps over the lazy dog's back.", actual);
         }
+
+        [TestMethod]
+        public void RemoveMultipleBlankLines_OneTwoThreeFourFive()
+        {
+            const string input = @"The
+quick
+
+brown
+
+
+fox
+
+
+
+jumps
+
+
+
+
+over the lazy dog's back.";
+
+            var actual = Program.RemoveMultipleBlankLines(input);
+
+            const string expected = @"The
+quick
+
+brown
+
+fox
+
+jumps
+
+over the lazy dog's back.";
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
