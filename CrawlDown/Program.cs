@@ -100,13 +100,13 @@ namespace CrawlDown
                     var imageFileName = Path.GetFileName(imageUriPath);
                     var imageFilePath = Path.Combine(_destinationPath, imageFileName);
                     var imageFileInfo = new FileInfo(imageFilePath);
-                    var t = HttpClient.GetStreamAsync(imageUri).ContinueWith(t =>
+                    var t = HttpClient.GetStreamAsync(imageUri).ContinueWith(innerTask =>
                     {
-                        if (t.Status == TaskStatus.RanToCompletion)
+                        if (innerTask.Status == TaskStatus.RanToCompletion)
                         {
                             using (var sw = new FileStream(imageFileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.Read))
                             {
-                                t.Result.CopyTo(sw);
+                                innerTask.Result.CopyTo(sw);
                             }
                             SourceToImageMap.Add(imageUriString, imageFileInfo);
                         }
