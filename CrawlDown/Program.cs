@@ -17,7 +17,9 @@ namespace CrawlDown
     {
         internal static HttpClient HttpClient = new HttpClient();
 
+        // ReSharper disable once InconsistentNaming
         internal bool _isDebug = false;
+        // ReSharper disable once InconsistentNaming
         internal string _destinationPath = null;
 
         public Article Article
