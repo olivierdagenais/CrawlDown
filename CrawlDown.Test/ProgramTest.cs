@@ -81,7 +81,7 @@ namespace CrawlDown
         [TestMethod]
         public void Main()
         {
-            Program.Main(new string[] { "" });
+            Program.Main(new[] { "" });
         }
 
         protected Uri UriForResource(string relativePath)
