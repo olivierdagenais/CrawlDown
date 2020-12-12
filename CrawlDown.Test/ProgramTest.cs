@@ -124,6 +124,31 @@ A book summary by Olivier Dagenais
         }
 
         [TestMethod]
+        public void ConvertToMarkdown_withImages()
+        {
+            const string title = "withImages";
+            var resource = _resources["withImages/page.html"];
+            var sourceFileInfo = resource.Item2;
+            using var sr = sourceFileInfo.OpenText();
+            var htmlString = sr.ReadToEnd();
+            var cut = new Program();
+            var (imageUri, imageFileInfo) = _resources["withImages/process-working.png"];
+            cut.SourceToImageMap[imageUri.ToString()] = imageFileInfo;
+            using var destination = new StringWriter();
+
+            cut.ConvertToMarkdown(title, htmlString, destination);
+
+            var actual = destination.ToString();
+            // TODO: the expected value currently needs "    " after both "<br>"
+            Assert.AreEqual(
+                @"# withImages
+
+<br>    Here's a traditional image:<br>    
+![process-working.png](process-working.png)
+", actual);
+        }
+
+        [TestMethod]
         public void DownloadArticle_Wewlc()
         {
             var testUri = UriForResource("WEWLC.html");

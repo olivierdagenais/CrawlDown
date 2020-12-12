@@ -126,6 +126,8 @@ namespace CrawlDown
                 UnknownTags = Config.UnknownTagsOption.Bypass,
             };
             var converter = new Converter(rmConfig);
+            // ReSharper disable once ObjectCreationAsStatement
+            new OfflineImage(converter, SourceToImageMap);
 
             var markdownText = converter.Convert(htmlString);
 
