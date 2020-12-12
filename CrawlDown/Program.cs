@@ -20,7 +20,7 @@ namespace CrawlDown
         // ReSharper disable once InconsistentNaming
         internal bool _isDebug = false;
         // ReSharper disable once InconsistentNaming
-        internal string _destinationPath = null;
+        internal string _destinationPath;
 
         public Article Article
         {
