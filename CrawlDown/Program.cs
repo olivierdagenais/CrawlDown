@@ -94,25 +94,24 @@ namespace CrawlDown
             {
                 var imageUri = image.Source;
                 var imageUriString = imageUri.ToString();
-                if (!SourceToImageMap.ContainsKey(imageUriString))
+                if (SourceToImageMap.ContainsKey(imageUriString)) continue;
+
+                var imageUriPath = imageUri.AbsolutePath.TrimEnd('/');
+                var imageFileName = Path.GetFileName(imageUriPath);
+                var imageFilePath = Path.Combine(_destinationPath, imageFileName);
+                var imageFileInfo = new FileInfo(imageFilePath);
+                var t = HttpClient.GetStreamAsync(imageUri).ContinueWith(innerTask =>
                 {
-                    var imageUriPath = imageUri.AbsolutePath.TrimEnd('/');
-                    var imageFileName = Path.GetFileName(imageUriPath);
-                    var imageFilePath = Path.Combine(_destinationPath, imageFileName);
-                    var imageFileInfo = new FileInfo(imageFilePath);
-                    var t = HttpClient.GetStreamAsync(imageUri).ContinueWith(innerTask =>
+                    if (innerTask.Status == TaskStatus.RanToCompletion)
                     {
-                        if (innerTask.Status == TaskStatus.RanToCompletion)
+                        using (var sw = new FileStream(imageFileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.Read))
                         {
-                            using (var sw = new FileStream(imageFileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.Read))
-                            {
-                                innerTask.Result.CopyTo(sw);
-                            }
-                            SourceToImageMap.Add(imageUriString, imageFileInfo);
+                            innerTask.Result.CopyTo(sw);
                         }
-                    });
-                    tasks.Add(t);
-                }
+                        SourceToImageMap.Add(imageUriString, imageFileInfo);
+                    }
+                });
+                tasks.Add(t);
             }
             Task.WaitAll(tasks.ToArray());
         }
