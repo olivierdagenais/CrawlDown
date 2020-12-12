@@ -27,20 +27,19 @@ namespace CrawlDown
         public override string Convert(HtmlNode node)
         {
             var result = base.Convert(node);
-            if (result.Length > 0)
-            {
-                var src = node.GetAttributeValue("src", string.Empty);
-                if (_sourceToImageMap.ContainsKey(src))
-                {
-                    var imageFileInfo = _sourceToImageMap[src];
-                    src = imageFileInfo.Name;
-                }
-                var alt = node.GetAttributeValue("alt", src);
-                var title = ExtractTitle(node);
-                title = title.Length > 0 ? $" \"{title}\"" : "";
+            if (result.Length <= 0) return result;
 
-                result = $"![{EscapeLinkText(alt)}]({src}{title})";
+            var src = node.GetAttributeValue("src", string.Empty);
+            if (_sourceToImageMap.ContainsKey(src))
+            {
+                var imageFileInfo = _sourceToImageMap[src];
+                src = imageFileInfo.Name;
             }
+            var alt = node.GetAttributeValue("alt", src);
+            var title = ExtractTitle(node);
+            title = title.Length > 0 ? $" \"{title}\"" : "";
+
+            result = $"![{EscapeLinkText(alt)}]({src}{title})";
             return result;
         }
 
