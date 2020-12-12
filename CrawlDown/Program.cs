@@ -130,9 +130,11 @@ namespace CrawlDown
             var markdownText = converter.Convert(htmlString);
 
             var trimmedMarkdown = markdownText.Trim();
+            // MD012/no-multiple-blanks
+            var normalizedMarkdown = RemoveMultipleBlankLines(trimmedMarkdown);
             destination.WriteLine($"# {title}");
             destination.WriteLine();
-            destination.Write(trimmedMarkdown);
+            destination.Write(normalizedMarkdown);
             destination.WriteLine();
         }
 
