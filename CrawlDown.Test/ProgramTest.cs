@@ -15,9 +15,9 @@ namespace CrawlDown
     [TestClass]
     public class ProgramTest
     {
-        private MockHttpMessageHandler _mockHttp = null;
-        private Uri _baseUri = null;
-        private IDictionary<string, Tuple<Uri, FileInfo>> _resources = null;
+        private MockHttpMessageHandler _mockHttp;
+        private Uri _baseUri;
+        private IDictionary<string, Tuple<Uri, FileInfo>> _resources;
 
         public void FindResourceFiles()
         {
