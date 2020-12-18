@@ -16,7 +16,7 @@ namespace CrawlDown
         /// <returns>
         /// A string containing no more than 2 consecutive line breaks.
         /// </returns>
-        public static string RemoveMultipleBlankLines(string s)
+        public static string RemoveMultipleBlankLines(this string s)
         {
             var regex = new Regex("(\\r?\\n){3,}");
             var result = regex.Replace(s, "\r\n\r\n");

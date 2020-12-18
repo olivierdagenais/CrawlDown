@@ -114,7 +114,7 @@ namespace CrawlDown
 
             var trimmedMarkdown = markdownText.Trim();
             // MD012/no-multiple-blanks
-            var normalizedMarkdown = StringExtensions.RemoveMultipleBlankLines(trimmedMarkdown);
+            var normalizedMarkdown = trimmedMarkdown.RemoveMultipleBlankLines();
             destination.WriteLine($"# {title}");
             destination.WriteLine();
             destination.Write(normalizedMarkdown);
