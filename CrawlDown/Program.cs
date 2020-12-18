@@ -114,18 +114,12 @@ namespace CrawlDown
 
             var trimmedMarkdown = markdownText.Trim();
             // MD012/no-multiple-blanks
-            var normalizedMarkdown = RemoveMultipleBlankLines(trimmedMarkdown);
+            var normalizedMarkdown = StringExtensions.RemoveMultipleBlankLines(trimmedMarkdown);
             destination.WriteLine($"# {title}");
             destination.WriteLine();
             destination.Write(normalizedMarkdown);
             destination.WriteLine();
         }
 
-        internal static string RemoveMultipleBlankLines(string s)
-        {
-            var regex = new Regex("(\\r?\\n){3,}");
-            var result = regex.Replace(s, "\r\n\r\n");
-            return result;
-        }
     }
 }
