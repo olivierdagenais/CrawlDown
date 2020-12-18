@@ -27,7 +27,7 @@ namespace CrawlDown
             var resourceFiles = resourcesDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories);
             foreach (var resourceFile in resourceFiles)
             {
-                var fixedRelativePath = Program.RelativizePath(resourcesFolder, resourceFile.FullName);
+                var fixedRelativePath = PathExtensions.RelativizePath(resourcesFolder, resourceFile.FullName);
                 var uri = new Uri(_baseUri, fixedRelativePath);
                 _resources.Add(fixedRelativePath, Tuple.Create(uri, resourceFile));
             }
@@ -157,7 +157,7 @@ A book summary by Olivier Dagenais
             var actual = cut.DownloadArticle(testUri);
 
             Assert.AreEqual("Working Effectively With Legacy Code", actual.Title);
-            var relativeDestinationPath = Program.RelativizePath(cut._destinationPath);
+            var relativeDestinationPath = PathExtensions.RelativizePath(cut._destinationPath);
             Assert.AreEqual("localhost", relativeDestinationPath);
         }
 
@@ -173,42 +173,6 @@ A book summary by Olivier Dagenais
 
             var actual = cut.SourceToImageMap;
             Assert.AreEqual(1, actual.Count);
-        }
-
-        [TestMethod]
-        public void RelativizePath_Incompatible()
-        {
-            var commonPath = @"C:\Users\user\src\project\repo";
-            var longerPath = @"C:\Users\developer\src\project\repo\sub";
-
-            var e = Assert.ThrowsException<ArgumentException>(() =>
-            {
-                Program.RelativizePath(commonPath, longerPath);
-            });
-
-            StringAssert.Contains(e.Message, @"repo\sub' does not start with 'C:\Users\user");
-        }
-
-        [TestMethod]
-        public void RelativizePath_OneSubFolder()
-        {
-            var commonPath = @"C:\Users\developer\src\project\repo";
-            var longerPath = @"C:\Users\developer\src\project\repo\sub";
-
-            var actual = Program.RelativizePath(commonPath, longerPath);
-
-            Assert.AreEqual("sub", actual);
-        }
-
-        [TestMethod]
-        public void RelativizePath_TwoSubFolders()
-        {
-            var commonPath = @"C:\Users\developer\src\project\repo";
-            var longerPath = @"C:\Users\developer\src\project\repo\sub\folder";
-
-            var actual = Program.RelativizePath(commonPath, longerPath);
-
-            Assert.AreEqual("sub/folder", actual);
         }
 
         [TestMethod]

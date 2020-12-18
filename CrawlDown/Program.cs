@@ -44,25 +44,6 @@ namespace CrawlDown
             Console.WriteLine("Hello World!");
         }
 
-        internal static string RelativizePath(string longerPath)
-        {
-            return RelativizePath(Environment.CurrentDirectory, longerPath);
-        }
-
-        internal static string RelativizePath(string commonPath, string longerPath)
-        {
-            if (!longerPath.StartsWith(commonPath))
-            {
-                throw new ArgumentException(
-                    $"{nameof(longerPath)} '{longerPath}' does not start with '{commonPath}'",
-                    nameof(longerPath)
-                );
-            }
-            var relativePath = longerPath.Substring(commonPath.Length + 1);
-            var result = relativePath.Replace('\\', '/');
-            return result;
-        }
-
         public Article DownloadArticle(Uri uri)
         {
             var sr = new Reader(uri.ToString())
