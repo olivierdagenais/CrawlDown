@@ -37,6 +37,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="mail\PlainTextOnly.eml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="mail\TextAndHTml.eml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="resources\WEWLC.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

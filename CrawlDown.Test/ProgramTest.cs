@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using MimeMapping;
 using RichardSzalay.MockHttp;
@@ -173,6 +174,33 @@ A book summary by Olivier Dagenais
 
             var actual = cut.SourceToImageMap;
             Assert.AreEqual(1, actual.Count);
+        }
+
+        [TestMethod]
+        public void DownloadMail_PlainTextOnly()
+        {
+            using var pop3Server = Pop3Server.Start("mail/PlainTextOnly.eml");
+
+            var actual = Program.DownloadPop3Messages(pop3Server.Uri);
+
+            var message = actual.First();
+            Assert.AreEqual("BFG Repo-Cleaner by rtyley", message.Subject);
+            const string expectedUrl = "https://rtyley.github.io/bfg-repo-cleaner/";
+            StringAssert.Contains(message.TextBody, expectedUrl);
+        }
+
+        [TestMethod]
+        public void DownloadMail_TextAndHtml()
+        {
+            using var pop3Server = Pop3Server.Start("mail/TextAndHtml.eml");
+
+            var actual = Program.DownloadPop3Messages(pop3Server.Uri);
+
+            var message = actual.First();
+            Assert.AreEqual("Article: In-Memory POP3 Server in C#", message.Subject);
+            const string expectedUrl = "https://alexfalkowski.blogspot.com/2013/04/in-memory-pop3-server-in-c.html?m=1";
+            StringAssert.Contains(message.TextBody, expectedUrl);
+            StringAssert.Contains(message.HtmlBody, expectedUrl);
         }
 
         [TestMethod]

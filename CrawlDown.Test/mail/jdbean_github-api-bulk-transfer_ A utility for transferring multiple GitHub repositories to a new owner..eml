@@ -1,0 +1,25 @@
+Received: from SN6PR03MB4046.namprd03.prod.outlook.com (2603:10b6:805:b9::23)
+ by DM5PR03MB2970.namprd03.prod.outlook.com with HTTPS; Sat, 7 Nov 2020
+ 00:28:14 +0000
+From: Sendy McSender <sendy@mcsender.example.com>
+To: "Mr. Receiver" <mr@receiver.example.com>
+Subject: jdbean/github-api-bulk-transfer: A utility for transferring multiple
+ GitHub repositories to a new owner.
+Thread-Topic: jdbean/github-api-bulk-transfer: A utility for transferring
+ multiple GitHub repositories to a new owner.
+Thread-Index: AQHWtJzeLDJPfy8Nikiotmw0VzrxhA==
+Date: Sat, 7 Nov 2020 00:28:10 +0000
+Message-ID:
+ <YQBPR0101MB1393EFC73C0B8B4D8ABEBB77ACEC0@YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM>
+Accept-Language: en-CA, en-US
+Content-Language: en-CA
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+Content-Type: text/plain; charset="us-ascii"
+Content-ID:
+ <D24C55F8EF0B6F4FAC295B028D0AC825@sct-15-20-3174-20-msonline-outlook-14ba4.templateTenant>
+Content-Transfer-Encoding: quoted-printable
+Return-Path: sendy@mcsender.example.com
+MIME-Version: 1.0
+
+https://github.com/jdbean/github-api-bulk-transfer

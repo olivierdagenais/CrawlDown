@@ -1,0 +1,50 @@
+Delivered-To: mr@receiver.example.com
+Received: by 2002:adf:9484:0:0:0:0:0 with SMTP id 4csp1780678wrr;
+        Sat, 12 Dec 2020 18:16:10 -0800 (PST)
+From: Sendy McSender <sendy@mcsender.example.com>
+To: "Mr. Receiver" <mr@receiver.example.com>
+Subject: Article: In-Memory POP3 Server in C#
+Thread-Topic: Article: In-Memory POP3 Server in C#
+Thread-Index: AQHW0PXW4aDVUN0mf0yT5nwLlgYt0g==
+Date: Sun, 13 Dec 2020 02:16:09 +0000
+Message-ID:
+ <YQBPR0101MB13931E22E9A4B1DAF1C75171ACC80@YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM>
+Accept-Language: en-CA, en-US
+Content-Language: en-CA
+Content-Type: multipart/alternative;
+	boundary="_000_YQBPR0101MB13931E22E9A4B1DAF1C75171ACC80YQBPR0101MB1393_"
+MIME-Version: 1.0
+
+--_000_YQBPR0101MB13931E22E9A4B1DAF1C75171ACC80YQBPR0101MB1393_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+https://alexfalkowski.blogspot.com/2013/04/in-memory-pop3-server-in-c.html?=
+m=3D1
+
+
+--_000_YQBPR0101MB13931E22E9A4B1DAF1C75171ACC80YQBPR0101MB1393_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Verdana, Geneva, sans-serif; font-size: 12pt; co=
+lor: rgb(0, 0, 0);">
+<a href=3D"https://alexfalkowski.blogspot.com/2013/04/in-memory-pop3-server=
+-in-c.html?m=3D1" id=3D"LPlnk">https://alexfalkowski.blogspot.com/2013/04/i=
+n-memory-pop3-server-in-c.html?m=3D1</a><br>
+</div>
+<div class=3D"_Entity _EType_OWALinkPreview _EId_OWALinkPreview _EReadonly_=
+1"></div>
+<br>
+</body>
+</html>
+
+--_000_YQBPR0101MB13931E22E9A4B1DAF1C75171ACC80YQBPR0101MB1393_--

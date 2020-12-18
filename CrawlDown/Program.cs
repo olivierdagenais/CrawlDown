@@ -7,6 +7,8 @@ using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using MailKit.Net.Pop3;
+using MimeKit;
 using ReverseMarkdown;
 
 [assembly: InternalsVisibleTo("CrawlDown.Test")]
@@ -145,6 +147,22 @@ namespace CrawlDown
             var regex = new Regex("(\\r?\\n){3,}");
             var result = regex.Replace(s, "\r\n\r\n");
             return result;
+        }
+
+        public static IEnumerable<MimeMessage> DownloadPop3Messages(Uri pop3ServerUri)
+        {
+            using var client = new Pop3Client();
+            client.Connect(pop3ServerUri);
+            client.Authenticate("TODO", "TODO");
+
+            for (var i = 0; i < client.Count; i++)
+            {
+                var message = client.GetMessage(i);
+                yield return message;
+                client.DeleteMessage(i);
+            }
+
+            client.Disconnect(true);
         }
     }
 }

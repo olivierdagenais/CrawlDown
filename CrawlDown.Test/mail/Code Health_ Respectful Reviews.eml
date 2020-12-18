@@ -1,0 +1,243 @@
+Received: from MWHPR03MB2992.namprd03.prod.outlook.com (2603:10b6:300:11d::21)
+ by DM5PR03MB2970.namprd03.prod.outlook.com with HTTPS; Sun, 1 Nov 2020
+ 12:49:39 +0000
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=pass;
+ b=P/O7uMdbmLjNXDzEtp8nG8P6YjTIQddlxnFwE9QZkISq9DbmaADTg9c7FlCFgKr0LdHmVYZKfCI6kFU/AVPPtxm5ENbq0/v98p7h1AgcL1raYqHYeaUeClcBjX/5FpG0/HnmBCZu/AalxYdKKyQbL2e9HPGSjhQxEempPa7mQPTyrQ8Zt/61mUU9CelNIRkf/jeGJhkVOHdSK5vo0f8Dgfi/VTNJ2bCq+cOWDqSCPU5t0fiBtcRPV3Hf8Xipx0ZlKjjv9sxrbcsyhWZMoEgP58hrOcPMvj86wXKH9ZcS9wtabbmnf5pQpdScfOHnamPTqtn3NgLqJeKsMU9fL0lY1A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HLhsnyYHlLB1Rwuk6Wgr645jCWGR7uxqKgUxlqFiUwg=;
+ b=SmevclqhSJkdQiaC879XeReUZggOPhcvxguILVgmgsojnZt8dErruJmJcTRjv9vo7OzXz/z9nFIiJcESYm3X8CeEoezM4O+twXe76CtNY1pHXJQMPrEekg/Ar/LA7OI5cvBvU4AWwHLq8S49YuMoSREyuMZpexxm+wqaCzeOUCbnBxT908cgpln9i0i4/uwg/V+9cV+ImWCgoLpjyaAzEwMbI1l/2Z7guqZ8T3TgdrF3fNw/O/5SO2L5SN4rcYmBCgmlON/8ORYgMpo/Me9u3CcCpAf98AxF4pslApurAEELlTF+6ndgpO+nsr91tMnJiTNIemhzmaiv+HGo5gxsZQ==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 40.92.3.70) smtp.rcpttodomain=kinaxis.com smtp.mailfrom=bravodelta.ca;
+ dmarc=bestguesspass action=none header.from=bravodelta.ca; dkim=none (message
+ not signed); arc=pass (0 oda=0 ltdi=1)
+Received: from YQXPR0101CA0070.CANPRD01.PROD.OUTLOOK.COM
+ (2603:10b6:c00:14::47) by MWHPR03MB2992.namprd03.prod.outlook.com
+ (2603:10b6:300:11d::21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.18; Sun, 1 Nov
+ 2020 12:49:38 +0000
+Received: from QB1CAN01FT012.eop-CAN01.prod.protection.outlook.com
+ (2603:10b6:c00:14:cafe::d9) by YQXPR0101CA0070.outlook.office365.com
+ (2603:10b6:c00:14::47) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.18 via Frontend
+ Transport; Sun, 1 Nov 2020 12:49:37 +0000
+Authentication-Results: spf=pass (sender IP is 40.92.3.70)
+ smtp.mailfrom=bravodelta.ca; kinaxis.com; dkim=none (message not signed)
+ header.d=none;kinaxis.com; dmarc=bestguesspass action=none
+ header.from=bravodelta.ca;compauth=pass reason=109
+Received-SPF: Pass (protection.outlook.com: domain of bravodelta.ca designates
+ 40.92.3.70 as permitted sender) receiver=protection.outlook.com;
+ client-ip=40.92.3.70; helo=NAM02-BL2-obe.outbound.protection.outlook.com;
+Received: from NAM02-BL2-obe.outbound.protection.outlook.com (40.92.3.70) by
+ QB1CAN01FT012.mail.protection.outlook.com (10.152.120.144) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.3520.15 via Frontend Transport; Sun, 1 Nov 2020 12:49:36 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=jc61Srz7oLVDXnep5oo0BaVL0EhRN2JD+9CvTU/C7CX3BLx0Kn8qLF/2BAUdkDj6/bPSYDUW5PsBJR7z31TRIwRq+U9a0TlDwVub2nQlSrpHypTk8TZv7FshFRr568Ok+7dSiQt9XQuqFYuxmtdmLEbas8b77Km/QpvW93g8vya7zwr8O5y6K8mgnCeYXhLbyonGGDeii0cA/RCabfmeut/SjOw9/24wUIqI18JVky2bPISNQ1wFDVnQ3RHSnhgo4SEbfeLCg+KKUl5yX0dy2AMeozIkiYMQMmloyNNtZfBDpK6JGpHFtC2sqe084f7cgmQUDGGYwJ9uwsIJHw+cBQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HLhsnyYHlLB1Rwuk6Wgr645jCWGR7uxqKgUxlqFiUwg=;
+ b=WfUYUcqy0KdZpwsltP7OPgZ7aHF4v2PqRN2abZ37hd9YdbquF6k99xi/s+3ykKRP4GiaRvovfqCOzTvEl7W5r4X8OBCG02EHe2IdlKfAC8ztuOqLzwwF18vI6uXOd7i0iM4Ug4N+XYGO7/OIQcddTU07qUOpoDEa9kaqJNCTaXlYyHhvjY/EQoEEkhvk6FajELubVYYy3lV9/K3NHzeXZ6pToOKzIKyPeKmI3Pd7VR8h4ffns9zpvbYhWcdx+wppzQVol+nuByVvcullqbV4LvOqKesGHhIk9hsn8P9HulwrjoxCyFSNgn2OKKScEZgAsKWt06eUnvSh6KHgNWZb3g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
+ dkim=none; arc=none
+Received: from BL2NAM02FT019.eop-nam02.prod.protection.outlook.com
+ (10.152.76.56) by BL2NAM02HT203.eop-nam02.prod.protection.outlook.com
+ (10.152.76.184) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3520.15; Sun, 1 Nov
+ 2020 12:49:36 +0000
+Received: from YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM
+ (2a01:111:e400:7e46::4c) by BL2NAM02FT019.mail.protection.outlook.com
+ (2a01:111:e400:7e46::422) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3520.15 via Frontend
+ Transport; Sun, 1 Nov 2020 12:49:35 +0000
+Received: from YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::5921:c70e:d67f:61ce]) by YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM
+ ([fe80::5921:c70e:d67f:61ce%6]) with mapi id 15.20.3499.029; Sun, 1 Nov 2020
+ 12:49:35 +0000
+From: Olivier Dagenais <oli@bravodelta.ca>
+To: "odagenais@kinaxis.com" <odagenais@kinaxis.com>
+Subject: Code Health: Respectful Reviews
+Thread-Topic: Code Health: Respectful Reviews
+Thread-Index: AQHWsE1RybbHHJQVEUuRdmajJJ4iaA==
+Date: Sun, 1 Nov 2020 12:49:35 +0000
+Message-ID:
+ <YQBPR0101MB1393AC2D8C94F0968E5EA926AC130@YQBPR0101MB1393.CANPRD01.PROD.OUTLOOK.COM>
+Accept-Language: en-CA, en-US
+Content-Language: en-CA
+X-MS-Has-Attach:
+X-MS-TNEF-Correlator:
+x-incomingtopheadermarker:
+ OriginalChecksum:2978B8A5A311466ACE119F11FFBE468237D8100C208C916DCDDF3714CC4378F8;UpperCasedChecksum:1F0D55601FD76A9A35D4D39BEDE984B5F70CE665C1C740BB4A1155098F6086C2;SizeAsReceived:6642;Count:41
+x-tmn: [BizlKsweWkB9FuTGzZyH6ew3BN1b4qP3]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 41
+x-eopattributedmessage: 1
+X-MS-Office365-Filtering-Correlation-Id: 305fc99e-e5ab-4e3d-8865-08d87e64970c
+x-ms-traffictypediagnostic: BL2NAM02HT203:|MWHPR03MB2992:
+X-Microsoft-Antispam-Untrusted: BCL:0;
+X-Microsoft-Antispam-Message-Info-Original:
+ 8I3dqUHvp7Ff4IFa42+66ULOMd243T2VRincK/P40bTcUmMkTSVXJs/3JvfpzOI/IPahQ+2USl6Z4nPdaBlXplK3wfsB9I6f363Xg2Bsrli7ejdlOL/aIISO+jvBOBSoWR8P7vDFASpsfWXWpIb8iabFrpwaLVPDWJW8pB6boy2746j42U0rZ638fcJltLPyelT2gmOmDD9F6fQWv4Wvf6tPmYGvdYYHW+YKFvRBpXwib1Qvnw9Li6joErz9ylPg
+x-ms-exchange-antispam-messagedata:
+ kHiAR4m3bBnVl2R5ep5nM50486+HBnkU8yqGRMatAGzcwNpqDpSj5UC1D1O0zvRp9KVV5CBgtlBC8bdvz2GLpUMrm0b1TCk5Rby530kV9fvXPs0TmJoB1NHKYsr9oGIKJ00c5JRhAOvnv+KJPpl9Jg==
+x-ms-exchange-transport-forked: True
+Content-Type: multipart/alternative;
+	boundary="_000_YQBPR0101MB1393AC2D8C94F0968E5EA926AC130YQBPR0101MB1393_"
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL2NAM02HT203
+Return-Path: oli@bravodelta.ca
+X-MS-Exchange-Organization-ExpirationStartTime: 01 Nov 2020 12:49:36.8935
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: OriginalSubmit
+X-MS-Exchange-Organization-ExpirationInterval: 1:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: OriginalSubmit
+X-MS-Exchange-Organization-Network-Message-Id:
+ 305fc99e-e5ab-4e3d-8865-08d87e64970c
+X-EOPTenantAttributedMessage: 412b6b7e-2fe4-4a5f-98a1-2b3ad03af1f8:0
+X-MS-Exchange-Organization-MessageDirectionality: Incoming
+X-MS-Exchange-Transport-CrossTenantHeadersStripped:
+ QB1CAN01FT012.eop-CAN01.prod.protection.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted:
+ QB1CAN01FT012.eop-CAN01.prod.protection.outlook.com
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Exchange-Organization-AuthSource:
+ QB1CAN01FT012.eop-CAN01.prod.protection.outlook.com
+X-MS-Exchange-Organization-AuthAs: Anonymous
+X-MS-Office365-Filtering-Correlation-Id-Prvs:
+ b9dad949-a5dd-4da0-03a8-08d87e64965b
+X-MS-Exchange-AtpMessageProperties: SA
+X-MS-Oob-TLC-OOBClassifiers: OLM:6430;
+X-MS-Exchange-Organization-SCL: -1
+X-Microsoft-Antispam: BCL:0;
+X-Forefront-Antispam-Report:
+ CIP:40.92.3.70;CTRY:US;LANG:en;SCL:-1;SRV:;IPV:NLI;SFV:SFE;H:NAM02-BL2-obe.outbound.protection.outlook.com;PTR:mail-oln040092003070.outbound.protection.outlook.com;CAT:NONE;SFS:;DIR:INB;
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Nov 2020 12:49:36.7856
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 305fc99e-e5ab-4e3d-8865-08d87e64970c
+X-MS-Exchange-CrossTenant-Id: 412b6b7e-2fe4-4a5f-98a1-2b3ad03af1f8
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-AuthSource:
+ QB1CAN01FT012.eop-CAN01.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR03MB2992
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:02.2262946
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.3499.029
+X-Microsoft-Antispam-Mailbox-Delivery:
+	wl:1;pcwl:1;ucf:0;jmr:0;auth:0;dest:I;ENG:(750128)(520011016)(520004050)(702028)(944506458)(944626604);
+X-Microsoft-Antispam-Message-Info:
+	=?iso-8859-1?Q?BHvwfMkeLn4KsXRFQQ6jy22MfORiNQE4vsQ6bUanvkvcRqO5b7wFy2KqcQ?=
+ =?iso-8859-1?Q?kR1vI5tAWzcFd6ZRHWewbCcueKCWSpXKkAjXRXpQDTK3cULhDX7OFr661/?=
+ =?iso-8859-1?Q?4Gh/+N9tTp0Df2Usv9HPRKIrXGnT6cgzhJ/qXu+4fai4UHobybS8ao57aa?=
+ =?iso-8859-1?Q?/YW85Q/t0bD1HzZGFXLcS67bt60NPBfWMdDTdMYOmNrRnog3derj6w7T/P?=
+ =?iso-8859-1?Q?U81oWY9wTGUpAhWHI1DLS7cjBYykuznGNPWkXKvKbRHlz3MnxFXUhNunU8?=
+ =?iso-8859-1?Q?xxW1nIk3uWGA8vhLVZrYnh5bSSO9Qiec2pJqT7z3N6tDONZEeOIgWUHxUf?=
+ =?iso-8859-1?Q?lX1KiNWTaTwwVKyDeVu44xpd5iQQGARh3nbBuES+iuEJMbbwNiJftJS7qU?=
+ =?iso-8859-1?Q?QvW7PeBhBhalqmsREEnavsZs6SA1+gGl2w3T3UUnvU0gfEu3/ll5PWGVtZ?=
+ =?iso-8859-1?Q?2hETsUOkFhnhs1tFjv2SIn7ixRYcWcbWlm9C38OD+/CbdI+vb7WBM3qTde?=
+ =?iso-8859-1?Q?ZreQRid55w5eReoMSdlrKCEE9Uj42zH1x5AZKuKHFJOZWMMnpQ4c0gsFPh?=
+ =?iso-8859-1?Q?965q6x/0zd7LgjWAT09agLIe/jR3LuNybXJSR8g8r9CGJjCAv3mVf5Dhkd?=
+ =?iso-8859-1?Q?YHly78JNpABi88cPOnT0ubuaZBtbmflq2Re8T38QCPieoGoijaOKvMBYn5?=
+ =?iso-8859-1?Q?LrJdeKhT9GRUqFXYfzSl12mLthvndEYaODJW2sX9AC9DJo4R0wMi0qEKcw?=
+ =?iso-8859-1?Q?csgVUg5UyqV6BOlDOnwz95tDDmQn2QXp1xy2HglxgUwt2G/HQcHeij/e6x?=
+ =?iso-8859-1?Q?xpectQaOatAT1mxSIc48wb/przRfTbnVVKdVS41lg5gGW+FBdu77lkLr9a?=
+ =?iso-8859-1?Q?/mwRMSTxgfuR+wQF4qz3hb+bI4YOpA/fpC07oXfFvTBWPLkyi8kHl94i5n?=
+ =?iso-8859-1?Q?XA3qLCP5T6FUtjUiHQvjTKBK1lnIE9IQJbB5jMRE2HfLZXulHxAPg+J9ef?=
+ =?iso-8859-1?Q?ZBrLZkEvLlY7pBSO1JQQyeUNMerOq03zKFDJB54UR90L3N3EkHHFW2noHY?=
+ =?iso-8859-1?Q?NzVKZ7N67mxdiAMIEz8jz8pliRyagghpm+LdDAD3QiHcmOXBl0eRbP7yM6?=
+ =?iso-8859-1?Q?+YyRiZq4k3jUvK7QvbLNwyKvuKtALCBwQpXTdRYdoe/KF6xA9+eY4GozKE?=
+ =?iso-8859-1?Q?Jif2cvIKUyY4gG3JpQXKwPrxBzaB1o6rQ0lp4Efcec3qbV8H8uoJthTOJN?=
+ =?iso-8859-1?Q?UYoGiMVVdKN/Cn6Gnp+HlKyiGX1BhFsmXtgCq67aQoUrCVvsusMtTSqqqC?=
+ =?iso-8859-1?Q?8gsD?=
+MIME-Version: 1.0
+
+--_000_YQBPR0101MB1393AC2D8C94F0968E5EA926AC130YQBPR0101MB1393_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+https://docs.google.com/document/d/1_Gljf1TMTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7=
+u3Mc/edit
+[https://lh6.googleusercontent.com/SFk4CRfir2LjsqWRByB6FGcfxuviHlrexxmCrJOK=
+SVwpU3Lr2lvT39e_ffw7vNkvz90tF1FaGo0=3Dw1200-h630-p]<https://docs.google.com=
+/document/d/1_Gljf1TMTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7u3Mc/edit>
+Code Health: Respectful Reviews<https://docs.google.com/document/d/1_Gljf1T=
+MTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7u3Mc/edit>
+Testing on the Toilet Presents... Healthy Code on the Commode Respectful Re=
+views =3D=3D Useful Reviews While code review is recognized as a valuable t=
+ool for improving the quality of software projects, code review comments th=
+at are perceived as being unclear or harsh can have unfa...
+docs.google.com
+
+
+--_000_YQBPR0101MB1393AC2D8C94F0968E5EA926AC130YQBPR0101MB1393_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Verdana, Geneva, sans-serif; font-size: 12pt; co=
+lor: rgb(0, 0, 0);">
+<a href=3D"https://docs.google.com/document/d/1_Gljf1TMTV2WPsiXCdk8oIkiq6ui=
+ajN_IqGdlD7u3Mc/edit" id=3D"LPlnk">https://docs.google.com/document/d/1_Glj=
+f1TMTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7u3Mc/edit</a><br>
+</div>
+<div class=3D"_Entity _EType_OWALinkPreview _EId_OWALinkPreview _EReadonly_=
+1">
+<div id=3D"LPBorder_GTaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xX0dsa=
+mYxVE1UVjJXUHNpWENkazhvSWtpcTZ1aWFqTl9JcUdkbEQ3dTNNYy9lZGl0" class=3D"LPBor=
+der472661" style=3D"width: 100%; margin-top: 16px; margin-bottom: 16px; pos=
+ition: relative; max-width: 800px; min-width: 424px;">
+<table id=3D"LPContainer472661" role=3D"presentation" style=3D"padding: 12p=
+x 36px 12px 12px; width: 100%; border-width: 1px; border-style: solid; bord=
+er-color: rgb(200, 200, 200); border-radius: 2px;">
+<tbody>
+<tr valign=3D"top" style=3D"border-spacing: 0px;">
+<td>
+<div id=3D"LPImageContainer472661" style=3D"position: relative; margin-righ=
+t: 12px; height: 126px; overflow: hidden; width: 240px;">
+<a target=3D"_blank" id=3D"LPImageAnchor472661" href=3D"https://docs.google=
+.com/document/d/1_Gljf1TMTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7u3Mc/edit"><img id=
+=3D"LPThumbnailImageId472661" alt=3D"" height=3D"126" style=3D"display: blo=
+ck;" width=3D"240" src=3D"https://lh6.googleusercontent.com/SFk4CRfir2LjsqW=
+RByB6FGcfxuviHlrexxmCrJOKSVwpU3Lr2lvT39e_ffw7vNkvz90tF1FaGo0=3Dw1200-h630-p=
+"></a></div>
+</td>
+<td style=3D"width: 100%;">
+<div id=3D"LPTitle472661" style=3D"font-size: 21px; font-weight: 300; margi=
+n-right: 8px; font-family: wf_segoe-ui_light, &quot;Segoe UI Light&quot;, &=
+quot;Segoe WP Light&quot;, &quot;Segoe UI&quot;, &quot;Segoe WP&quot;, Taho=
+ma, Arial, sans-serif; margin-bottom: 12px;">
+<a target=3D"_blank" id=3D"LPUrlAnchor472661" href=3D"https://docs.google.c=
+om/document/d/1_Gljf1TMTV2WPsiXCdk8oIkiq6uiajN_IqGdlD7u3Mc/edit" style=3D"t=
+ext-decoration: none; color: var(--themePrimary);">Code Health: Respectful =
+Reviews</a></div>
+<div id=3D"LPDescription472661" style=3D"font-size: 14px; max-height: 100px=
+; color: rgb(102, 102, 102); font-family: wf_segoe-ui_normal, &quot;Segoe U=
+I&quot;, &quot;Segoe WP&quot;, Tahoma, Arial, sans-serif; margin-bottom: 12=
+px; margin-right: 8px; overflow: hidden;">
+Testing on the Toilet Presents... Healthy Code on the Commode Respectful Re=
+views =3D=3D Useful Reviews While code review is recognized as a valuable t=
+ool for improving the quality of software projects, code review comments th=
+at are perceived as being unclear or
+ harsh can have unfa...</div>
+<div id=3D"LPMetadata472661" style=3D"font-size: 14px; font-weight: 400; co=
+lor: rgb(166, 166, 166); font-family: wf_segoe-ui_normal, &quot;Segoe UI&qu=
+ot;, &quot;Segoe WP&quot;, Tahoma, Arial, sans-serif;">
+docs.google.com</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</body>
+</html>
+
+--_000_YQBPR0101MB1393AC2D8C94F0968E5EA926AC130YQBPR0101MB1393_--
