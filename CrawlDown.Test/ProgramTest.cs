@@ -27,7 +27,7 @@ namespace CrawlDown
             var resourceFiles = resourcesDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories);
             foreach (var resourceFile in resourceFiles)
             {
-                var fixedRelativePath = PathExtensions.RelativizePath(resourcesFolder, resourceFile.FullName);
+                var fixedRelativePath = resourcesFolder.RelativizePath(resourceFile.FullName);
                 var uri = new Uri(_baseUri, fixedRelativePath);
                 _resources.Add(fixedRelativePath, Tuple.Create(uri, resourceFile));
             }
@@ -157,7 +157,7 @@ A book summary by Olivier Dagenais
             var actual = cut.DownloadArticle(testUri);
 
             Assert.AreEqual("Working Effectively With Legacy Code", actual.Title);
-            var relativeDestinationPath = PathExtensions.RelativizePath(cut._destinationPath);
+            var relativeDestinationPath = cut._destinationPath.RelativizePath();
             Assert.AreEqual("localhost", relativeDestinationPath);
         }
 

@@ -4,12 +4,12 @@ namespace CrawlDown
 {
     public static class PathExtensions
     {
-        public static string RelativizePath(string longerPath)
+        public static string RelativizePath(this string longerPath)
         {
             return RelativizePath(Environment.CurrentDirectory, longerPath);
         }
 
-        public static string RelativizePath(string commonPath, string longerPath)
+        public static string RelativizePath(this string commonPath, string longerPath)
         {
             if (!longerPath.StartsWith(commonPath))
             {
